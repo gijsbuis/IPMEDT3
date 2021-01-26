@@ -2,6 +2,7 @@ window.onload = () => {
   const camera = document.getElementById('js--camera');
   const places = document.getElementsByClassName('js--place');
   const bomb = document.getElementById('js--bomb');
+  const scene = document.getElementById("js--scene");
 
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
@@ -18,34 +19,33 @@ window.onload = () => {
 
 
 
-
+  const bekerCarry = document.getElementById("js--bekerCarry");
 
 
 
   // Choose element //
     const elements = document.getElementsByClassName("js--element");
 
+    const element1Pos = "-0.5 0.35 0.2";
+    const element2Pos = "0 0.35 0";
+    const element3Pos = "0.5 0.35 0.12";
+    const element4Pos = "1 0.35 -0.1";
+    const element5Pos = "1.15 0.35 0.35";
+
     for (let i = 0; i < elements.length; i++) {
       elements[i].addEventListener("click", function(evt){
 
-        let elementPos = elements[i].getAttribute("position");
-        elementPos.y = -2;
-
-        console.log(elementPos);
-        console.log("XD");
+        elements[i].setAttribute("position","-0.75 1.0 0.32");
+        elements[i].setAttribute("rotation","0 45 90");
+        elements[i].setAttribute("animation","property: rotation; to: 0 45 125; dur: 1500; easing: linear; loop: false");
+        setTimeout(function(){
+          elements[i].setAttribute("position","0 -2 0");
+          elements[i].setAttribute("animation","property: rotation; to: 0 0 0; dur: 10; easing: linear; loop: false");
+        }, 1600);
 
         let elementColor = elements[i].getAttribute("color");
         counter(elementColor);
         main();
-
-        elements[i].setAttribute("position","-1.35 1.35 0.32");
-        elements[i].setAttribute("animation","property: rotation; to: 150 0 0; dur: 2000; easing: linear; loop: false");
-        setTimeout(function(){
-          elements[i].setAttribute("position","-1.35 -1.35 0.32");
-          elements[i].setAttribute("animation","property: rotation; to: 0 0 0; dur: 10; easing: linear; loop: false");
-         }, 3000);
-
-
       });
     }
 
@@ -57,46 +57,106 @@ window.onload = () => {
       if(elementColor == "red" || elementColor == "green" || elementColor == "pink"){
         countCorrect++;
         totalTries++;
+        fillCup();
       }
       else{
         totalTries++;
+        fillCup();
       }
+    }
+
+  // Fill //
+    const fill = document.getElementsByClassName("js--fill");
+    const colorArray = ["green","red","blue"];
+    let fillLevel = 0;
+
+    function fillCup(){
+      fill[fillLevel].setAttribute("opacity","1");
+      fill[fillLevel+1].setAttribute("opacity","1");
+      for (let i = 0; i < fill.length; i++) {
+        fill[i].setAttribute("color",colorArray[fillLevel]);
+      }
+      fillLevel++;
     }
 
   // Main //
     const doorRight = document.getElementsByClassName("js--doorRight");
     const doorLeft = document.getElementsByClassName("js--doorLeft");
+    const beker = document.getElementsByClassName("js--beker");
+    let puzzleComplete = false;
 
     function main(){
       if(countCorrect == 3 && totalTries == 3){
-        doorRight[0].setAttribute("animation","property: rotation; to: 0 45 0; dur: 2000; easing: linear; loop: false");
-        doorLeft[0].setAttribute("animation","property: rotation; to: 0 -45 0; dur: 2000; easing: linear; loop: false");
+        setTimeout(function(){
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.remove("js--interact");
+          }
+          puzzleComplete = true;
+        }, 1600);
       }
       else if(totalTries == 3){
-        resetElements();
+        setTimeout(function(){
+          resetElements();
+        }, 1600);
       }
+    }
+
+  // Correct element //
+    let bekerBoolean = false;
+
+    for (let i = 0; i < beker.length; i++) {
+      beker[i].addEventListener("click", function(evt){
+        if(puzzleComplete == true){
+          beker[i].setAttribute("position","0 5 0");
+          // console.log(bekerCarry);
+          // camera.innerHTML += bekerCarry;
+          // console.log(camera);
+          bekerBoolean = true;
+        } else{
+          console.log("neej");
+        }
+      });
+    }
+
+  // Melt lock //
+    const slot = document.getElementsByClassName("js--slot");
+    const bekerSlot = document.getElementsByClassName("js--bekerSlot");
+
+    for (let i = 0; i < slot.length; i++) {
+      slot[i].addEventListener("click", function(evt){
+        if(bekerBoolean == true){
+          bekerSlot[0].setAttribute("position","0 1.65 2.54");
+          bekerSlot[0].setAttribute("rotation","0 -145 90");
+          bekerSlot[0].setAttribute("animation","property: rotation; to: 0 -145 125; dur: 1500; easing: linear; loop: false");
+          for (let i = 0; i < slot.length; i++) {
+            slot[i].setAttribute("animation","property: opacity; to: 0; dur: 1500; easing: linear; loop: false");
+          }
+          setTimeout(function(){
+            bekerSlot[0].setAttribute("position","0 -2 2.34");
+            slot[i].setAttribute("scale","0.01 0.01 0.01");
+            doorRight[0].setAttribute("animation","property: rotation; to: 0 40 0; dur: 2000; easing: linear; loop: false");
+            doorLeft[0].setAttribute("animation","property: rotation; to: 0 -40 0; dur: 2000; easing: linear; loop: false");
+          }, 1600);
+        } else{
+          console.log("nee");
+        }
+      });
     }
 
   // Reset elements //
     function resetElements(){
-      for (let i = 0; i < elements.length; i++) {
         countCorrect = 0;
         totalTries = 0;
+        fillLevel = 0;
 
-        let elementPos = elements[i].getAttribute("position");
-        elementPos.y = 0.35;
-        elements[i].setAttribute("position",elementPos);
-      }
+        for (let i = 0; i < fill.length; i++) {
+          fill[i].setAttribute("opacity","0");
+        }
+
+        elements[0].setAttribute("position", element1Pos);
+        elements[1].setAttribute("position", element2Pos);
+        elements[2].setAttribute("position", element3Pos);
+        elements[3].setAttribute("position", element4Pos);
+        elements[4].setAttribute("position", element5Pos);
     }
-
-  // Reset button //
-      const reset = document.getElementsByClassName("js--reset");
-
-      for (let i = 0; i < reset.length; i++) {
-        reset[i].addEventListener("click", function(evt){
-          resetElements();
-        });
-      }
-
-
 }
