@@ -159,4 +159,17 @@ window.onload = () =>{
     }
   }
   addListeners();
+  for (let i = 0; i < placeholders.length; i++) {
+    placeholders[i].addEventListener('click', function(evt){
+      if (hold == "box"){
+        let box = document.createElement('a-box');
+        box.setAttribute("class", "js--pickup js--interact");
+        box.setAttribute("color", "green");
+        box.setAttribute("position", {x: this.getAttribute('position').x, y:"0.5", z: this.getAttribute('position').z});
+        scene.appendChild(box);
+        document.getElementById("js--hold").remove();
+        addListeners();
+        hold = null;
+      }
+    });
 }
