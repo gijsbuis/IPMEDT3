@@ -100,6 +100,7 @@ window.onload = () =>{
   let box3 = document.getElementById("js--hold3");
   let box4 = document.getElementById("js--hold4");
   let box5 = document.getElementById("js--hold5");
+  let antwoordText = document.getElementById("antwoordText");
   
 
   const placeholders = document.getElementsByClassName('js--placeholder');
@@ -107,6 +108,7 @@ window.onload = () =>{
   let papier = document.getElementById('js--papier');
   
   function addListeners() {
+    let tracker = 0;
     for (let i = 0; i < pickups.length; i++) {
       pickups[i].addEventListener('click', function(evt){
         if (hold == null) {
@@ -117,36 +119,68 @@ window.onload = () =>{
             setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
             setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
             setTimeout(function(){box1.setAttribute("animation", "property: position; to: 0.8 1.25 1.2; loop: false; dur: 3000");},4000)
+            tracker = 1;
+            gameLogica(tracker);
           } 
           if (this.id == "js--hold2"){
             setTimeout(function(){papier.setAttribute("src", "#PapierRood");},2000)
             setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
             setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
             setTimeout(function(){box2.setAttribute("animation", "property: position; to: 0.8 1.25 1.6; loop: false; dur: 3000");},4000)
+            tracker = 4;
+            gameLogica(tracker);
           }
           if (this.id == "js--hold3"){
             setTimeout(function(){papier.setAttribute("src", "#PapierGroen");},2000)
             setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
             setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
             setTimeout(function(){box3.setAttribute("animation", "property: position; to: 0.8 1.25 2; loop: false; dur: 3000");},4000)
+            tracker = 2;
+            gameLogica(tracker);
           } 
           if (this.id == "js--hold4"){
             setTimeout(function(){papier.setAttribute("src", "#PapierBlauw");},2000)
             setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
             setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
             setTimeout(function(){box4.setAttribute("animation", "property: position; to: 0.8 1.25 0.4; loop: false; dur: 3000");},4000)
+            tracker = 6;
+            gameLogica(tracker);
           } 
           if (this.id == "js--hold5"){
             setTimeout(function(){papier.setAttribute("src", "#PapierPaars");},2000)
             setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
             setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
             setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.25 0.8; loop: false; dur: 3000");},4000)
+            tracker = 8;
+            gameLogica(tracker);
           } 
         }
       });
     }
   }
   addListeners();
+  gameLogica();
+
+  let RfWaardes = ["1.5","1","3","0.75","6"];
+  let randomNum = Math.floor(Math.random() * Math.floor(5));
+  let ditAntwoord = RfWaardes[randomNum];
+  console.log(ditAntwoord);
+  antwoordText.setAttribute("value", "Je bent op zoek naar een vloeistof met een 'Rf' waarde van " + ditAntwoord)
+ 
+
+  function gameLogica(tracker){
+    // instructietext
+    let Rf = 6 / tracker;
+  if(Rf == ditAntwoord){
+    console.log("grats");
+  } else {
+    console.log("bot");
+  }
+  }
+
+
+
+
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
       let att = document.createAttribute('animation');
