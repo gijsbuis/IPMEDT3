@@ -2,11 +2,12 @@ window.onload = () => {
   const camera = document.getElementById('js--camera');
   const places = document.getElementsByClassName('js--place');
   const bomb = document.getElementById('js--bomb');
-
-
+  const placeholders = document.getElementsByClassName('js--placeholder');
+  let scene = document.getElementById('js--scene');
+  
   for (let i = 0; i < places.length; i++) {
-    places[i].addEventListener('click', function(event) {
-      let att = document.createAttribute('animation');
+    places[i].addEventListener('click', function(evt){
+      let att = document.createAttribute("animation");
       att.value = "property: position; easing: linear; dur: 2000; to: " + this.getAttribute('position').x + " 1.6 " + this.getAttribute('position').z;
       camera.setAttribute('animation', att.value);
     });
@@ -16,10 +17,6 @@ window.onload = () => {
     console.log("BOOOOMMMM");
     this.remove();
   })
-
-
-
-
 
 
 
@@ -159,18 +156,5 @@ window.onload = () =>{
     }
   }
   addListeners();
-  for (let i = 0; i < placeholders.length; i++) {
-    placeholders[i].addEventListener('click', function(evt){
-      if (hold == "box"){
-        let box = document.createElement('a-box');
-        box.setAttribute("class", "js--pickup js--interact");
-        box.setAttribute("color", "green");
-        box.setAttribute("position", {x: this.getAttribute('position').x, y:"0.5", z: this.getAttribute('position').z});
-        scene.appendChild(box);
-        document.getElementById("js--hold").remove();
-        addListeners();
-        hold = null;
-      }
-    });
-}
+
 }
