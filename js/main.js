@@ -4,6 +4,7 @@ window.onload = () => {
   const bomb = document.getElementById('js--bomb');
   const scene = document.getElementById("js--scene");
   const placeholders = document.getElementsByClassName('js--placeholder');
+  const doosjeBovenkant = document.getElementById('js--rotateBoxTop');
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
       let att = document.createAttribute('animation');
@@ -14,6 +15,7 @@ window.onload = () => {
 
   bomb.addEventListener('click', function(event) {
     console.log("BOOOOMMMM");
+    doosjeBovenkant.setAttribute("animation","property: rotation; to: -30 0 0; dur: 2000; easing: linear; loop: false");
     this.remove();
   })
 
