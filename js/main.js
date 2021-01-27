@@ -170,6 +170,16 @@ window.onload = () => {
         elements[3].setAttribute("position", element4Pos);
         elements[4].setAttribute("position", element5Pos);
     }
+
+
+
+
+
+
+
+
+
+    
     function addListeners() {
       let tracker = 0;
       for (let i = 0; i < pickups.length; i++) {
