@@ -5,6 +5,9 @@ window.onload = () => {
   const scene = document.getElementById("js--scene");
   const placeholders = document.getElementsByClassName('js--placeholder');
   const doosjeBovenkant = document.getElementById('js--rotateBoxTop');
+  const triangleKeyBox = document.getElementById('js--keyBox');
+  const triangleKeyBoxLock = document.getElementById('js--triangleKeyBoxLock');
+  const puzzleOneLeftNumberUp = document.getElementById('js--puzzleOneLeftNumberUp');
   let pickups = document.getElementsByClassName('js--pickup');
   let hold = null;
   let box1 = document.getElementById("js--hold1");
@@ -25,11 +28,10 @@ window.onload = () => {
 
   bomb.addEventListener('click', function(event) {
     console.log("BOOOOMMMM");
-    doosjeBovenkant.setAttribute("animation","property: rotation; to: -30 0 0; dur: 2000; easing: linear; loop: false");
     this.remove();
   })
 
-
+  openTriangleKeyBox();
 
   const bekerCarry = document.getElementById("js--bekerCarry");
 
@@ -179,7 +181,7 @@ window.onload = () => {
 
 
 
-    
+
     function addListeners() {
       let tracker = 0;
       for (let i = 0; i < pickups.length; i++) {
@@ -249,5 +251,21 @@ window.onload = () => {
     } else {
       console.log("bot");
     }
+    }
+
+    puzzleOneLeftNumberUp.addEventListener('click', function(event) {
+      console.log("BOOOOMMMM");
+      this.remove();
+    })
+
+
+    function openTriangleKeyBox() {
+      triangleKeyBoxLock.setAttribute("animation","property: opacity; to: 0.0; dur: 2000; easeing: linear; loop: false;");
+      setTimeout(function () {
+        doosjeBovenkant.setAttribute("animation","property: rotation; to: -30 0 0; dur: 2000; easing: linear; loop: false");
+        setTimeout(function () {
+          triangleKeyBox.setAttribute("animation", "property: rotation; to: 30 45 0; dur:2000; easing: linear; loop: false")
+        }, 2000);
+      }, 2000);
     }
 }

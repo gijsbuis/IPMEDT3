@@ -23,6 +23,8 @@
       <img id="PapierRoze" src="img/PapierRoze.jpg">
       <a-asset-item id="water-obj" src="blender/water.obj"></a-asset-item>
       <a-asset-item id="water-mtl" src="blender/water.mtl"></a-asset-item>
+      <a-asset-item id="triangleKey-obj" src="blender/trianglekey.obj"></a-asset-item>
+      <a-asset-item id="triangleKey-mtl" src="blender/trianglekey.mtl"></a-asset-item>
       <a-asset-item id="sleutel-obj" src="blender/sleutel.obj"></a-asset-item>
       <a-asset-item id="sleutel-mtl" src="blender/sleutel.mtl"></a-asset-item>
       <img id="wood" src="assets/wood.png">
@@ -41,7 +43,7 @@
     </a-assets>
 
     <!-- <a-camera id="js--camera" position="0 1.6 7"> -->
-    <a-camera id="js--camera" position="0 1.6 6">
+    <a-camera id="js--camera" position="-7 1.6 0">
       <a-entity
         animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
         animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -443,7 +445,7 @@
     <a-cylinder color="white" position="-0.45 -0.5 -1.8" height="1" radius="0.1"></a-cylinder>
 
     <!-- Doosje -->
-    <a-plane class="js--keyBox" material="src: #wood" width="0.5" height="0.25" position="0.3 0.18 -1" rotation="0 45 0">
+    <a-plane id="js--keyBox" material="src: #wood" width="0.5" height="0.25" position="0.3 0.18 -1" rotation="0 45 0">
       <a-plane material="src: #wood" width="0.5" height="0.25" position="0 0 0" rotation="0 180 0"></a-plane>
 
       <a-plane material="src: #wood" width="0.5" height="0.25" position="0.25 0 -0.25" rotation="0 -90 0"></a-plane>
@@ -466,15 +468,41 @@
       <a-box color="grey" scale="0.03 0.04 0.03" position="0 0.1 0.015"></a-box>
 
       <!-- Slot -->
-      <a-box class="js--slot js--interact" color="red" position="0 0.02 0.03" rotation="-10 0 0" height="0.01" width="0.01" depth="0.01" opacity="0.0">
+      <a-box id="js--triangleKeyBoxLock" class="js--interact" color="red" position="0 0.02 0.03" rotation="-10 0 0" height="0.01" width="0.01" depth="0.01" opacity="0.0">
         <a-box class="js--slot js--interact" material="src: #gold" position="0 0 0" scale="0.1 0.1 0.05" opacity="1"></a-box>
         <a-torus class="js--slot js--interact" material="src: #iron" position="0 0.055 0" radius="0.03" radius-tubular="0.0054" opacity="1"></a-torus>
       </a-box>
+
+      <!-- Sleutel -->
+      <a-entity position="-0.1 -0.05 -0.4" obj-model="obj: #triangleKey-obj; mtl: #triangleKey-mtl" scale="0.08 0.08 0.08" rotation="0 45 0"></a-entity>
+
     </a-plane>
   </a-box>
 
-  <a-plane src="#instructiePapiertje" position="-8.99 2 0" rotation="0 90 0" width="2.5" height="1"></a-plane>
+  <a-entity class="puzzleOne" position="-8.99 2.5 1" rotation="0 90 0">
+    <a-entity class="puzzleOne--leftNumber">
+      <a-triangle id="js--puzzleOneLeftNumberUp" class="js--interact" color="grey" scale="0.5 0.5 0.5" position="0 0.8 0"></a-triangle>
+      <a-plane color="white" position="0 0 0" width="0.75" align="center">
+        <a-text id="js--puzzle1--valueOne" value="0" color="black" align="center" width="10"></a-text>
+      </a-plane>
+      <a-triangle class="js--interact" color="grey" scale="0.5 0.5 0.5" rotation="0 0 180" position="0 -0.8 0"></a-triangle>
+    </a-entity>
+  </a-entity>
 
+
+  <!-- <a-plane src="#instructiePapiertje" position="-8.99 2 0" rotation="0 90 0" width="2.5" height="1"></a-plane> -->
+
+  <!-- TODO Gijs:
+  1. Doosje maken ✅
+    1.1 Sleutel in doosje ✅
+  2. Invulpanel maken voor 9,61
+    2.0 Panels maken om getallen in te vullen
+    2.1 Zorgen dat 9,61 gemaakt kan worden
+    2.2 Zorgen dat je een visuele goedkeuring krijgt wanneer 9,61 is ingevuld
+  3. Slot toevoegen dat open gaat wanneer je 9,61 invult
+  4. Er achter komen hoeveel gram het slot is
+    4.1 Andere foto laten zien wanneer deze waarde gevonden is
+  -->
 
 
 <!-- DECORATIES -->
@@ -522,14 +550,6 @@
         <a-box material="src: #steel" height="0.05" width="0.05" depth="0.75" position="0.001 2.475 0.362"></a-box>
       </a-sphere>
     </a-sphere>
-
-  <!-- TODO:
-  1. Doosje maken ✅
-    1.1 Sleutel in doosje
-  2. Slot toevoegen dat open gaat wanneer je 9,61 invult
-  3. Er achter komen hoeveel gram het slot is
-    3.1 Andere foto laten zien wanneer deze waarde gevonden is
- -->
 
   </a-scene>
 </body>
