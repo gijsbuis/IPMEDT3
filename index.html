@@ -29,6 +29,9 @@
       <img id="steel" src="assets/steel.png">
       <img id="iron" src="assets/iron.png">
       <img id="gold" src="assets/gold.png">
+      <img id="wall" src="assets/wall.png">
+      <img id="floor" src="assets/floor.png">
+      <img id="sky" src="assets/sky.png">
       <img id="poster" src="assets/poster.png">
       <img id="instructiePapiertje" src="assets/instructiePapier.jpg">
       <a-asset-item id="pentagonkey-obj" src="blender/pentagonkey.obj"></a-asset-item>
@@ -36,7 +39,7 @@
     </a-assets>
 
     <!-- <a-camera id="js--camera" position="0 1.6 7"> -->
-    <a-camera id="js--camera" position="0 1.6 7">
+    <a-camera id="js--camera" position="0 7 11">
       <a-entity
         animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
         animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -47,14 +50,16 @@
     </a-camera>
 
     <!-- Alle A-frame objecten -->
+    <!-- sky -->
+    <a-sky material="src: #sky"></a-sky>
     <!-- Vloer -->
-    <a-plane color="grey" height="50" width="50" rotation="-90 0 0"></a-plane>
+    <a-plane material="src: #floor" repeat="25 50" height="100" width="50" rotation="-90 0 0"></a-plane>
 
     <!-- Muren -->
-    <a-plane color="green" height="5" width="20" position="10 2 0" rotation="0 -90 0"></a-plane>
-    <a-plane color="green" height="5" width="20" position="-10 2 0" rotation="0 90 0"></a-plane>
-    <a-plane color="green" height="5" width="20" position="0 2 10" rotation="180 0 0"></a-plane>
-    <a-plane color="green" height="5" width="20" position="0 2 -10" rotation="0 0 0"></a-plane>
+    <a-plane material="src: #wall" repeat="10 3" height="5" width="18" position="9 2 0" rotation="0 -90 0"></a-plane>
+    <a-plane material="src: #wall" repeat="10 3" height="5" width="18" position="-9 2 0" rotation="0 90 0"></a-plane>
+    <a-plane material="src: #wall" repeat="10 3" height="5" width="18" position="0 2 9" rotation="180 0 0"></a-plane>
+    <a-plane material="src: #wall" repeat="10 3" height="5" width="18" position="0 2 -9" rotation="0 0 0"></a-plane>
 
     <!-- Objects to move to -->
     <a-cylinder class="js--place js--interact" color="red" radius="0.5" height="0.1" position="6 0 0"></a-cylinder>
@@ -62,13 +67,35 @@
     <a-cylinder class="js--place js--interact" color="red" radius="0.5" height="0.1" position="0 0 7"></a-cylinder>
     <a-cylinder class="js--place js--interact" color="red" radius="0.5" height="0.1" position="0 0 -7"></a-cylinder>
 
+<!-- Starting room -->
+<a-sphere position="0 1 14">
+  <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="5 1 0" rotation="0 -90 0"></a-plane>
+  <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="-5 1 0" rotation="0 90 0"></a-plane>
+  <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="0 1 5" rotation="180 0 0"></a-plane>
+  <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="0 1 -5" rotation="0 0 0"></a-plane>
+<!-- Door -->
+
+
+
+  <a-obj-model src="#chair1-obj" mtl="#chair1-mtl"
+
+    rotation="0 70 0"
+    position="0.15 1.32 1.95"
+    scale="0.01 0.01 0.01"
+  ></a-obj-model>
+</a-sphere>
+
+
+
+
+
     <!-- Bom -->
     <!-- Placeholder atm -->
     <a-box id="js--bomb" class="js--interact" color="purple" height="1.25" width="1.25" depth="1.25"
       position="0 0.75 0.75"></a-box>
 
     <!-- element om vanuit te positioneren-->
-    <a-entity position="8.8 0 0">
+    <a-entity position="7.8 0 0">
       <!-- beker platen-->
       <a-cylinder class="js--placeholder js--interact" radius="0.1" height="0.05" color="white" position="0.8 0.9 1.2">
       </a-cylinder>
@@ -179,10 +206,10 @@
 
 
     <!-- Paintings -->
-    <a-box color="white" position="-9.95 3 5" height="0.75" depth="0.75" width="0.1"></a-box>
-    <a-box color="white" position="-9.95 3 -5" height="0.75" depth="0.75" width="0.1"></a-box>
-    <a-box color="white" position="9.95 3 5" height="0.75" depth="0.75" width="0.1"></a-box>
-    <a-box color="white" position="9.95 3 -5" height="0.75" depth="0.75" width="0.1"></a-box>
+    <a-box color="white" position="-8.95 3 5" height="0.75" depth="0.75" width="0.1"></a-box>
+    <a-box color="white" position="-8.95 3 -5" height="0.75" depth="0.75" width="0.1"></a-box>
+    <a-box color="white" position="8.95 3 5" height="0.75" depth="0.75" width="0.1"></a-box>
+    <a-box color="white" position="8.95 3 -5" height="0.75" depth="0.75" width="0.1"></a-box>
 
     <!-- Pickupable objects -->
 
@@ -200,7 +227,7 @@
 
 
 <!-- Kast -->
-  <a-sphere position="-3.3 0 -10.6" radius="0.5" rotation="0 15">
+  <a-sphere position="-3.3 0 -9.6" radius="0.5" rotation="0 15">
     <a-box material="src: #steel" height="5" width="0.05" depth="0.5" position="0.75 0 2"></a-box>
     <a-box material="src: #steel" height="5" width="0.05" depth="0.5" position="-0.75 0 2"></a-box>
     <a-box material="src: #steel" height="5" width="1.5" depth="0.05" position="0 0 1.75"></a-box>
@@ -215,7 +242,7 @@
       class="js--interact"
       obj-model="obj: #pentagonkey-obj; mtl: #pentagonkey-mtl"
       rotation="0 70 0"
-      position="0.15 1.31 2"
+      position="0.15 1.32 1.95"
       scale="0.1 0.1 0.1"
     ></a-entity>
 <!-- Key Lock -->
@@ -267,12 +294,12 @@
   </a-sphere>
 
 <!-- Explenation -->
-<a-plane material="src: #poster" height="2" width="3.5" position="0 2.5 -9.99" rotation="0 0 0"></a-plane>
-<a-plane color="grey" height="2.1" width="3.6" position="0 2.5 -9.995" rotation="0 0 0"></a-plane>
+<a-plane material="src: #poster" height="2" width="3.5" position="0 2.5 -8.98" rotation="0 0 0"></a-plane>
+<a-plane color="grey" height="2.1" width="3.6" position="0 2.5 -8.996" rotation="0 0 0"></a-plane>
 
 
 <!-- Table -->
-    <a-sphere color="white" radius="0.5" position="0 0 -11">
+    <a-sphere color="white" radius="0.5" position="0 0 -10">
       <a-box material="src: #wood" height="0.1" width="3" depth="1.4" position="0 0.8 2">
         <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="1.424 -0.5 0.624"></a-box>
         <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="1.424 -0.5 -0.624"></a-box>
@@ -343,7 +370,7 @@
 
   <!-- Deel Gijs -->
   <!-- Tafel -->
-  <a-box color="#303030" position="-9.37 1 0" height="0.1" depth="4" width="1.25">
+  <a-box color="#303030" position="-8.37 1 0" height="0.1" depth="4" width="1.25">
     <a-cylinder color="white" position="0.45 -0.5 1.8" height="1" radius="0.1"></a-cylinder>
     <a-cylinder color="white" position="-0.45 -0.5 1.8" height="1" radius="0.1"></a-cylinder>
     <a-cylinder color="white" position="0.45 -0.5 -1.8" height="1" radius="0.1"></a-cylinder>
@@ -370,7 +397,7 @@
     </a-plane>
   </a-box>
 
-  <a-plane src="#instructiePapiertje" position="-9.99 2 0" rotation="0 90 0" width="2.5" height="1"></a-plane>
+  <a-plane src="#instructiePapiertje" position="-8.99 2 0" rotation="0 90 0" width="2.5" height="1"></a-plane>
 
   <!-- TODO:
   1. Doosje maken ✅
