@@ -40,6 +40,7 @@
       <img id="instructiePapiertje" src="assets/instructiePapier.jpg">
       <a-asset-item id="pentagonkey-obj" src="blender/pentagonkey.obj"></a-asset-item>
       <a-asset-item id="pentagonkey-mtl" src="blender/pentagonkey.mtl"></a-asset-item>
+      <a-asset-item id="console" src="blender/console.gltf"></a-asset-item>
     </a-assets>
 
     <!-- <a-camera id="js--camera" position="0 1.6 7"> -->
@@ -81,6 +82,7 @@
     <!-- Vloer -->
     <a-plane material="src: #floor" repeat="25 50" height="100" width="50" rotation="-90 0 0"></a-plane>
     <a-plane material="src: #wall" repeat="12.5 25" position="0 5 0" height="100" width="50" rotation="90 0 0"></a-plane>
+    <a-entity gltf-model="#console" position="0 0 1.7" scale="0.12 0.12 0.12" rotation="0 90 0"></a-entity>
 
     <!-- Muren -->
 <!-- Muur rechts -->
@@ -176,9 +178,9 @@
       <a-cylinder class="js--placeholder js--interact" radius="0.1" height="0.05" color="white" position="0.8 0.9 0.8">
       </a-cylinder>
 
-      <a-plane src="#instructieImg" position="1.15 2.5 0" rotation="0 270 0" width="5" height="3">
+      <a-plane src="#instructieImg" position="1.15 2.75 0" rotation="0 270 0" width="5" height="3">
       </a-plane>
-      <a-text id="antwoordText" position="1.05 1.3 -2" rotation="0 270 0" value=" " color="red" scale="0.7"></a-text>
+      <a-text id="antwoordText" position="1.05 1.575 -2" rotation="0 270 0" value=" " color="red" scale="0.7"></a-text>
       <a-plane src="#PapierLeeg" id="js--papier" position="0.5 1.25 -2.5" rotation="-45 270 0" width="1" height="1">
       </a-plane>
 
@@ -192,10 +194,11 @@
 
       </a-box>
       <!-- reageerbuis-->
-      <a-cylinder height="0.6" position="-0.5 1.1 1.5" radius="0.15" opacity="0.4" open-ended="false">
-        <a-cylinder height="0.3" position="0 0 0dw" radius="0.12" opacity="0.5" color="white"></a-cylinder>
-        <a-entity rotation="0 90 20" position="0 0 0" obj-model="obj: #sleutel-obj; mtl: #sleutel-mtl"
-          scale="0.04 0.04 0.04">
+      <a-cylinder height="0.6" position="-0.5 1.1 3" radius="0.15" opacity="0.4" open-ended="false">
+        <a-cylinder id="js--vloeistof" height="0.3" position="0 0 0" radius="0.12" opacity="0.5" color="yellow">
+        </a-cylinder>
+        <a-entity id="js--cubeSleutel" rotation="0 90 20" position="0 0 0"
+          obj-model="obj: #sleutel-obj; mtl: #sleutel-mtl" scale="0.04 0.04 0.04">
         </a-entity>
       </a-cylinder>
       <!-- Roze beker-->
@@ -359,76 +362,107 @@
       <a-box material="src: #steel" height="0.05" width="0.05" depth="0.75" position="0.001 0.001 0.362"></a-box>
       <a-box material="src: #steel" height="0.05" width="0.05" depth="0.75" position="0.001 2.475 0.362"></a-box>
     </a-sphere>
-  </a-sphere>
 
-<!-- Explenation -->
-<a-plane material="src: #poster" height="2" width="3.5" position="0 2.5 -8.98" rotation="0 0 0"></a-plane>
-<a-plane color="grey" height="2.1" width="3.6" position="0 2.5 -8.996" rotation="0 0 0"></a-plane>
+    <!-- Explenation -->
+    <a-plane material="src: #poster" height="2" width="3.5" position="0 2.5 -9.99" rotation="0 0 0"></a-plane>
+    <a-plane color="grey" height="2.1" width="3.6" position="0 2.5 -9.995" rotation="0 0 0"></a-plane>
 
 
-<!-- Table -->
-    <a-sphere color="white" radius="0.5" position="0 0 -10">
+    <!-- Table -->
+    <a-sphere color="white" radius="0.5" position="0 0 -11">
       <a-box material="src: #wood" height="0.1" width="3" depth="1.4" position="0 0.8 2">
         <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="1.424 -0.5 0.624"></a-box>
         <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="1.424 -0.5 -0.624"></a-box>
         <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="-1.424 -0.5 -0.624"></a-box>
         <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="-1.424 -0.5 0.624"></a-box>
-<!-- Beker -->
-        <a-cone class="js--beker js--interact" color="green" position="-1.1 0.35 0.32" radius-bottom="0.20" radius-top="0.06" height="0.6" opacity="0.0">
-          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
-          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
+        <!-- Beker -->
+        <a-cone class="js--beker js--interact" color="green" position="-1.1 0.35 0.32" radius-bottom="0.20"
+          radius-top="0.06" height="0.6" opacity="0.0">
+          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
+          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
           <a-torus position="0 0.26 0" rotation="90" radius="0.05" radius-tubular="0.005" opacity="0.5"></a-torus>
           <a-torus position="0 -0.275 0" rotation="90" radius="0.1470" radius-tubular="0.02" opacity="0.5"></a-torus>
 
-          <a-torus class="js--fill" position="0 -0.275 0" color="black" rotation="90" radius="0.1335" radius-tubular="0.02" opacity="0"></a-torus>
-          <a-cone class="js--fill" position="0 -0.23 0" color="black" height="0.05" radius-bottom="0.17" radius-top="0.155" open-ended="false" opacity="0"></a-cone>
-          <a-cone class="js--fill" position="0 -0.18 0" color="black" height="0.08" radius-bottom="0.16" radius-top="0.135" open-ended="false" opacity="0"></a-cone>
-          <a-cone class="js--fill" position="0 -0.10 0" color="black" height="0.08" radius-bottom="0.135" radius-top="0.11" open-ended="false" opacity="0"></a-cone>
+          <a-torus class="js--fill" position="0 -0.275 0" color="black" rotation="90" radius="0.1335"
+            radius-tubular="0.02" opacity="0"></a-torus>
+          <a-cone class="js--fill" position="0 -0.23 0" color="black" height="0.05" radius-bottom="0.17"
+            radius-top="0.155" open-ended="false" opacity="0"></a-cone>
+          <a-cone class="js--fill" position="0 -0.18 0" color="black" height="0.08" radius-bottom="0.16"
+            radius-top="0.135" open-ended="false" opacity="0"></a-cone>
+          <a-cone class="js--fill" position="0 -0.10 0" color="black" height="0.08" radius-bottom="0.135"
+            radius-top="0.11" open-ended="false" opacity="0"></a-cone>
         </a-cone>
-<!-- Element 1 -->
-        <a-cone class="js--interact js--element" color="green" position="-0.5 0.35 0.2" radius-bottom="0.20" radius-top="0.06" height="0.6" opacity="0.0">
-          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
-          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
+        <!-- Element 1 -->
+        <a-cone class="js--interact js--element" color="green" position="-0.5 0.35 0.2" radius-bottom="0.20"
+          radius-top="0.06" height="0.6" opacity="0.0">
+          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
+          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
           <a-torus position="0 0.26 0" rotation="90" radius="0.05" radius-tubular="0.005" opacity="0.5"></a-torus>
           <a-torus position="0 -0.275 0" rotation="90" radius="0.1470" radius-tubular="0.02" opacity="0.5"></a-torus>
-          <a-cone position="0 -0.175 0" color="#DDA0DD" height="0.15" radius-bottom="0.17" radius-top="0.115" open-ended="false" opacity="1"></a-cone>
-          <a-torus position="0 -0.275 0" color="#DDA0DD" rotation="90" radius="0.1335" radius-tubular="0.02" opacity="1"></a-torus>
+          <a-cone position="0 -0.175 0" color="#DDA0DD" height="0.15" radius-bottom="0.17" radius-top="0.115"
+            open-ended="false" opacity="1"></a-cone>
+          <a-torus position="0 -0.275 0" color="#DDA0DD" rotation="90" radius="0.1335" radius-tubular="0.02"
+            opacity="1"></a-torus>
         </a-cone>
-<!-- Element 2 -->
-        <a-cone class="js--interact js--element" color="blue" position="0 0.35 0" radius-bottom="0.20" radius-top="0.06" height="0.6" opacity="0.0">
-          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
-          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
+        <!-- Element 2 -->
+        <a-cone class="js--interact js--element" color="blue" position="0 0.35 0" radius-bottom="0.20" radius-top="0.06"
+          height="0.6" opacity="0.0">
+          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
+          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
           <a-torus position="0 0.26 0" rotation="90" radius="0.05" radius-tubular="0.005" opacity="0.5"></a-torus>
           <a-torus position="0 -0.275 0" rotation="90" radius="0.1470" radius-tubular="0.02" opacity="0.5"></a-torus>
-          <a-cone position="0 -0.175 0" color="#2F4F4F" height="0.15" radius-bottom="0.17" radius-top="0.115" open-ended="false" opacity="1"></a-cone>
-          <a-torus position="0 -0.275 0" color="#2F4F4F" rotation="90" radius="0.1335" radius-tubular="0.02" opacity="1"></a-torus>
+          <a-cone position="0 -0.175 0" color="#2F4F4F" height="0.15" radius-bottom="0.17" radius-top="0.115"
+            open-ended="false" opacity="1"></a-cone>
+          <a-torus position="0 -0.275 0" color="#2F4F4F" rotation="90" radius="0.1335" radius-tubular="0.02"
+            opacity="1"></a-torus>
         </a-cone>
-<!-- Element 3 -->
-        <a-cone class="js--interact js--element" color="red" position="0.5 0.35 0.12" radius-bottom="0.20" radius-top="0.06" height="0.6" opacity="0.0">
-          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
-          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
+        <!-- Element 3 -->
+        <a-cone class="js--interact js--element" color="red" position="0.5 0.35 0.12" radius-bottom="0.20"
+          radius-top="0.06" height="0.6" opacity="0.0">
+          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
+          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
           <a-torus position="0 0.26 0" rotation="90" radius="0.05" radius-tubular="0.005" opacity="0.5"></a-torus>
           <a-torus position="0 -0.275 0" rotation="90" radius="0.1470" radius-tubular="0.02" opacity="0.5"></a-torus>
-          <a-cone position="0 -0.175 0" color="#DAA520" height="0.15" radius-bottom="0.17" radius-top="0.115" open-ended="false" opacity="1"></a-cone>
-          <a-torus position="0 -0.275 0" color="#DAA520" rotation="90" radius="0.1335" radius-tubular="0.02" opacity="1"></a-torus>
+          <a-cone position="0 -0.175 0" color="#DAA520" height="0.15" radius-bottom="0.17" radius-top="0.115"
+            open-ended="false" opacity="1"></a-cone>
+          <a-torus position="0 -0.275 0" color="#DAA520" rotation="90" radius="0.1335" radius-tubular="0.02"
+            opacity="1"></a-torus>
         </a-cone>
-<!-- Element 4 -->
-        <a-cone class="js--interact js--element" color="pink" position="1 0.35 -0.1" radius-bottom="0.20" radius-top="0.06" height="0.6" opacity="0.0">
-          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
-          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
+        <!-- Element 4 -->
+        <a-cone class="js--interact js--element" color="pink" position="1 0.35 -0.1" radius-bottom="0.20"
+          radius-top="0.06" height="0.6" opacity="0.0">
+          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
+          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
           <a-torus position="0 0.26 0" rotation="90" radius="0.05" radius-tubular="0.005" opacity="0.5"></a-torus>
           <a-torus position="0 -0.275 0" rotation="90" radius="0.1470" radius-tubular="0.02" opacity="0.5"></a-torus>
-          <a-cone position="0 -0.175 0" color="#483D8B" height="0.15" radius-bottom="0.17" radius-top="0.115" open-ended="false" opacity="1"></a-cone>
-          <a-torus position="0 -0.275 0" color="#483D8B" rotation="90" radius="0.1335" radius-tubular="0.02" opacity="1"></a-torus>
+          <a-cone position="0 -0.175 0" color="#483D8B" height="0.15" radius-bottom="0.17" radius-top="0.115"
+            open-ended="false" opacity="1"></a-cone>
+          <a-torus position="0 -0.275 0" color="#483D8B" rotation="90" radius="0.1335" radius-tubular="0.02"
+            opacity="1"></a-torus>
         </a-cone>
-<!-- Element 5 -->
-        <a-cone class="js--interact js--element" color="purple" position="1.15 0.35 0.35" radius-bottom="0.20" radius-top="0.06" height="0.6" opacity="0.0">
-          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
-          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
+        <!-- Element 5 -->
+        <a-cone class="js--interact js--element" color="purple" position="1.15 0.35 0.35" radius-bottom="0.20"
+          radius-top="0.06" height="0.6" opacity="0.0">
+          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
+          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"
+            open-ended="true" opacity="0.5"></a-cone>
           <a-torus position="0 0.26 0" rotation="90" radius="0.05" radius-tubular="0.005" opacity="0.5"></a-torus>
           <a-torus position="0 -0.275 0" rotation="90" radius="0.1470" radius-tubular="0.02" opacity="0.5"></a-torus>
-          <a-cone position="0 -0.175 0" color="#2E8B57" height="0.15" radius-bottom="0.17" radius-top="0.115" open-ended="false" opacity="1"></a-cone>
-          <a-torus position="0 -0.275 0" color="#2E8B57" rotation="90" radius="0.1335" radius-tubular="0.02" opacity="1"></a-torus>
+          <a-cone position="0 -0.175 0" color="#2E8B57" height="0.15" radius-bottom="0.17" radius-top="0.115"
+            open-ended="false" opacity="1"></a-cone>
+          <a-torus position="0 -0.275 0" color="#2E8B57" rotation="90" radius="0.1335" radius-tubular="0.02"
+            opacity="1"></a-torus>
         </a-cone>
       </a-box>
     </a-sphere>
