@@ -8,6 +8,11 @@ window.onload = () => {
   const triangleKeyBox = document.getElementById('js--keyBox');
   const triangleKeyBoxLock = document.getElementById('js--triangleKeyBoxLock');
   const puzzleOneLeftNumberUp = document.getElementById('js--puzzleOneLeftNumberUp');
+  const puzzleOneLeftNumberDown = document.getElementById('js--puzzleOneLeftNumberDown');
+
+  let puzzleOneLeftNumber = 0;
+
+  let puzzleOneValueOne = document.getElementById('js--puzzle1--valueOne');
   let pickups = document.getElementsByClassName('js--pickup');
   let hold = null;
   let box1 = document.getElementById("js--hold1");
@@ -258,9 +263,24 @@ window.onload = () => {
     }
 
     puzzleOneLeftNumberUp.addEventListener('click', function(event) {
-      console.log("BOOOOMMMM");
-      this.remove();
-    })
+      if (puzzleOneLeftNumber === 9) {
+        puzzleOneLeftNumber = 0;
+      } else {
+        puzzleOneLeftNumber += 1;
+      }
+      puzzleOneValueOne.setAttribute('value', puzzleOneLeftNumber);
+      console.log(puzzleOneLeftNumber);
+    });
+
+    puzzleOneLeftNumberDown.addEventListener('click', function(event) {
+      if (puzzleOneLeftNumber === 0) {
+        puzzleOneLeftNumber = 9;
+      } else {
+        puzzleOneLeftNumber -= 1;
+      }
+      puzzleOneValueOne.setAttribute('value', puzzleOneLeftNumber);
+      console.log(puzzleOneLeftNumber);
+    });
 
 
     function openTriangleKeyBox() {
