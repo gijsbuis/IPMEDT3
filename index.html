@@ -364,9 +364,19 @@
 
       <a-plane material="src: #wood" width="0.5" height="0.5" position="0 -0.12 -0.25" rotation="-90 0 0"></a-plane>
 
+      <!-- Bovenkant doosje -->
       <a-sphere id="js--rotateBoxTop" radius="0.01" position="0 0.12 -0.5">
         <a-box material="src: #wood" width="0.5" height="0.05" depth="0.5" position="0 0 0.25"></a-box>
       </a-sphere>
+
+      <!-- Slothouder -->
+      <a-box color="grey" scale="0.03 0.04 0.03" position="0 0.1 0.015"></a-box>
+
+      <!-- Slot -->
+      <a-box class="js--slot js--interact" color="red" position="0 0.02 0.03" rotation="-10 0 0" height="0.01" width="0.01" depth="0.01" opacity="0.0">
+        <a-box class="js--slot js--interact" material="src: #gold" position="0 0 0" scale="0.1 0.1 0.05" opacity="1"></a-box>
+        <a-torus class="js--slot js--interact" material="src: #iron" position="0 0.055 0" radius="0.03" radius-tubular="0.0054" opacity="1"></a-torus>
+      </a-box>
     </a-plane>
   </a-box>
 
