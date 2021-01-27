@@ -222,7 +222,6 @@ window.onload = () => {
       }
     }
     addListeners();
-    gameLogica();
 
     let RfWaardes = ["1.5","1","3","0.75","6"];
     let randomNum = Math.floor(Math.random() * Math.floor(5));
@@ -233,9 +232,14 @@ window.onload = () => {
 
     function gameLogica(tracker){
       // instructietext
-      let Rf = 6 / tracker;
+    let Rf = 6 / tracker;
+    console.log(Rf);
     if(Rf == ditAntwoord){
-      console.log("grats");
+      let vloeistof = document.getElementById("js--vloeistof");
+      let cubeSleutel = document.getElementById("js--cubeSleutel");
+      setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
+      setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
+      console.log("cheers");
     } else {
       console.log("bot");
     }
