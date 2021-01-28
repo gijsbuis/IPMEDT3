@@ -25,6 +25,7 @@
       <a-asset-item id="water-mtl" src="blender/water.mtl"></a-asset-item>
       <a-asset-item id="triangleKey-obj" src="blender/trianglekey.obj"></a-asset-item>
       <a-asset-item id="triangleKey-mtl" src="blender/trianglekey.mtl"></a-asset-item>
+      <a-asset-item id="triangleKey" src="blender/trianglekey.gltf"></a-asset-item>
       <a-asset-item id="sleutel-obj" src="blender/sleutel.obj"></a-asset-item>
       <a-asset-item id="sleutel-mtl" src="blender/sleutel.mtl"></a-asset-item>
       <img id="wood" src="assets/wood.png">
@@ -40,13 +41,16 @@
       <img id="instructiePapiertje" src="assets/instructiePapier.jpg">
       <a-asset-item id="pentagonkey-obj" src="blender/pentagonkey.obj"></a-asset-item>
       <a-asset-item id="pentagonkey-mtl" src="blender/pentagonkey.mtl"></a-asset-item>
+      <a-asset-item id="pentagonkey" src="blender/pentagonkey.gltf"></a-asset-item>
       <a-asset-item id="console" src="blender/console.gltf"></a-asset-item>
       <a-asset-item id="bomb" src="blender/bomb.gltf"></a-asset-item>
       <a-asset-item id="brassKey" src="blender/brasskey.gltf"></a-asset-item>
+      <a-asset-item id="officeChair" src="blender/officeChair.gltf"></a-asset-item>
+      <video id="video" src="mp4/video.webm"></video>
     </a-assets>
 
     <!-- <a-camera id="js--camera" position="0 1.6 7"> -->
-    <a-camera id="js--camera" position="-7 1.6 0">
+    <a-camera id="js--camera" position="0 1.6 16">
       <a-entity
         animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
         animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -60,30 +64,33 @@
 
     <!-- Objects to move to -->
     <!-- Main kamer -->
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="1.2 0 5.8"></a-cylinder>
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="-1.2 0 5.8">
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="1.2 0 5.8" opacity="0"></a-cylinder>
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="-1.2 0 5.8" opacity="0">
     </a-cylinder>
 
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="1.2 0 -5.8">
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="1.2 0 -5.8" opacity="0">
     </a-cylinder>
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="-1.2 0 -5.8">
-    </a-cylinder>
-
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="5.8 0 1.2"></a-cylinder>
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="5.8 0 -1.2">
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="-1.2 0 -5.8" opacity="0">
     </a-cylinder>
 
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="-5.8 0 1.2">
-    </a-cylinder>
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="-5.8 0 -1.2">
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="5.8 0 1.2" opacity="0"></a-cylinder>
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="5.8 0 -1.2" opacity="0">
     </a-cylinder>
 
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="0 0 2"></a-cylinder>
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="0 0 -2"></a-cylinder>
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="2 0 0"></a-cylinder>
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="-2 0 0"></a-cylinder>
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="-5.8 0 1.2" opacity="0">
+    </a-cylinder>
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="-5.8 0 -1.2" opacity="0">
+    </a-cylinder>
+
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="0 0 2" opacity="0"></a-cylinder>
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="0 0 -2" opacity="0"></a-cylinder>
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="2 0 0" opacity="0"></a-cylinder>
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="-2 0 0" opacity="0"></a-cylinder>
     <!-- Start kamer -->
-    <a-cylinder class="js--place js--interact" color="grey" radius="0.5" height="0.1" position="-2.25 0 9"></a-cylinder>
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="-2.9 0 9" opacity="0"></a-cylinder>
+    <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="0 0 16" opacity="0"></a-cylinder>
+
+
 
     <!-- sky -->
     <a-sky material="src: #sky"></a-sky>
@@ -137,7 +144,7 @@
         <a-box color="white" position="0 -0.75 0" height="0.1" depth="0.1" width="2.6"></a-box>
       </a-box>
       <!-- Deur -->
-      <a-sphere position="-5.25 -0.5 0" radius="0.1">
+      <a-entity position="-5.25 -0.5 0" radius="0.1">
         <a-box material="src: #darkwood2" repeat="1 2" height="3" width="1.5" depth="0.1" position="-0.75 0 0"
           rotation="0 0 0" scale="1 1 1">
           <a-box material="src: #darkwood" position="0.65 0 0" height="3" depth="0.12" width="0.2"></a-box>
@@ -148,17 +155,43 @@
           <a-box material="src: #darkwood" position="0 -0.3 0" height="0.3" depth="0.11" width="1.5"></a-box>
           <a-box material="src: #gold" position="-0.65 -0.2 0" height="0.25" depth="0.14" width="0.1"></a-box>
         </a-box>
-      </a-sphere>
+      </a-entity>
     </a-plane>
 
     <!-- Starting room -->
     <a-entity position="0 1 14">
       <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="5 1 0" rotation="0 -90 0"></a-plane>
-      <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="-5 1 0" rotation="0 90 0"></a-plane>
-      <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="0 1 5" rotation="180 0 0"></a-plane>
-      <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="0 1 -5" rotation="0 0 0">
+      <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="-5 1 0" rotation="0 90 0">
+        <a-box color="lightblue" opacity="0.8" repeat="1 2" height="1.5" width="2.5" depth="0.05" position="0 0.2 0.01"
+          rotation="0 0 0">
+          <a-box color="blue" opacity="1" repeat="1 2" height="1.5" width="2.5" depth="0.05" position="0 0 -0.02"
+            rotation="0 0 0"></a-box>
+          <a-box color="white" position="-1.25 0 0" height="1.6" depth="0.1" width="0.1"></a-box>
+          <a-box color="white" position="1.25 0 0" height="1.6" depth="0.1" width="0.1"></a-box>
+          <a-box color="white" position="0 0.75 0" height="0.1" depth="0.1" width="2.6"></a-box>
+          <a-box color="white" position="0 -0.75 0" height="0.1" depth="0.1" width="2.6"></a-box>
+        </a-box>
+      </a-plane>
+      <!-- Wall back -->
+      <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="0 1 5" rotation="180 0 0">
+        <a-entity position="-3.65 -0.5 0" radius="0.1">
+          <a-box material="src: #darkwood2" repeat="1 2" height="3" width="1.5" depth="0.1" position="0.75 1 0"
+            rotation="180 0 0" scale="1 1 1">
+            <a-box material="src: #darkwood" position="0.65 0 0" height="3" depth="0.12" width="0.2"></a-box>
+            <a-box material="src: #darkwood" position="-0.65 0 0" height="3" depth="0.12" width="0.2"></a-box>
+            <a-box material="src: #darkwood" position="0 0 0" height="3" depth="0.12" width="0.2"></a-box>
+            <a-box material="src: #darkwood" position="0 1.375 0" height="0.3" depth="0.11" width="1.5"></a-box>
+            <a-box material="src: #darkwood" position="0 -1.375 0" height="0.3" depth="0.11" width="1.5"></a-box>
+            <a-box material="src: #darkwood" position="0 -0.3 0" height="0.3" depth="0.11" width="1.5"></a-box>
+            <a-box material="src: #gold" position="0.65 -0.2 0" height="0.25" depth="0.14" width="0.1"></a-box>
+          </a-box>
+        </a-entity>
+      </a-plane>
+      <!-- <a-plane class="js--interact" material="src: #gold" repeat="10 3" height="5" width="10" position="0 1 -6" rotation="0 0 0"></a-plane> -->
+      <!-- Wall front -->
+      <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="0 1 -5" rotation="0 0 0" physical-body>
         <!-- Deur -->
-        <a-sphere position="-3 -0.5 0" radius="0.1">
+        <a-entity class="js--door" position="-3.65 -0.5 0" radius="0.1">
           <a-box material="src: #darkwood2" repeat="1 2" height="3" width="1.5" depth="0.1" position="0.75 0 0"
             rotation="0 0 0" scale="1 1 1">
             <a-box material="src: #darkwood" position="0.65 0 0" height="3" depth="0.12" width="0.2"></a-box>
@@ -169,11 +202,36 @@
             <a-box material="src: #darkwood" position="0 -0.3 0" height="0.3" depth="0.11" width="1.5"></a-box>
             <a-box material="src: #gold" position="0.65 -0.2 0" height="0.25" depth="0.14" width="0.1"></a-box>
           </a-box>
-        </a-sphere>
+        </a-entity>
       </a-plane>
-      <!-- Door -->
+      <!-- Beamer -->
+      <a-plane class="js--beginScreen" color="white" opacity="0" repeat="10 3" height="2.7" width="4.8" position="1.5 1 -3.5" rotation="0 -10 0"></a-plane>
+      <a-plane material="src: #darkwood" repeat="10 3" height="0.1" width="4.8" position="1.5 -0.3 -3.45" rotation="0 -10 0">
+        <a-box position="2.2 -0.4 -0.4" rotation="45 0 0" material="src: #darkwood" width="0.1" height="1" depth="0.1"></a-box>
+        <a-box position="2.2 -0.4 0.4" rotation="-45 0 0" material="src: #darkwood" width="0.1" height="1" depth="0.1"></a-box>
+        <a-box position="-2.2 -0.4 -0.4" rotation="45 0 0" material="src: #darkwood" width="0.1" height="1" depth="0.1"></a-box>
+        <a-box position="-2.2 -0.4 0.4" rotation="-45 0 0" material="src: #darkwood" width="0.1" height="1" depth="0.1"></a-box>
+      </a-plane>
+      <!-- Begin button -->
+      <a-text class="js--textVanish" opacity="1" value="Kijk naar de rode knop om te beginnen" color="white" position="-1.85 1 -0.8" rotation="0 0 0"></a-text>
+      <a-cylinder class="js--interact js--begin" color="red" position="1 -0.1 -0.5" radius="0.2" height="0.2"></a-cylinder>
+      <a-cylinder class="js--interact js--begin" color="black" position="1 -0.1 -0.5" radius="0.3" height="0.05"></a-cylinder>
+      <a-video id="js--video" src="#video" autoplay loop="true" width="4.8" height="2.7" position="1.5 1 -3.5" rotation="0 -10 0"></a-video>
+
+      <a-entity id="js--officeChair" class="js--interact" rotation="0 -70 0" position="2 -1 1" scale="0.5 0.5 0.5" gltf-model="#officeChair">
+      </a-entity>
+      <!-- Table -->
+      <a-sphere color="white" radius="0.5" position="2 -1 -2.5" rotation="0 -15 0">
+        <a-box material="src: #wood" height="0.1" width="3" depth="1.4" position="0 0.8 2">
+          <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="1.424 -0.5 0.624"></a-box>
+          <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="1.424 -0.5 -0.624"></a-box>
+          <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="-1.424 -0.5 -0.624"></a-box>
+          <a-box material="src: #wood" height="1" width="0.15" depth="0.15" position="-1.424 -0.5 0.624"></a-box>
+        </a-box>
+      </a-sphere>
       <!-- animation="property: rotation; to: 0 90 0; dur: 1500; easing: linear; loop: false" -->
     </a-entity>
+<!-- End starting room -->
 
 
     <!-- Bom -->
@@ -329,8 +387,8 @@
       <a-box material="src: #steel" height="0.05" width="1.45" depth="0.5" position="0 1.8555 2"></a-box>
       <a-box material="src: #steel" height="0.05" width="1.45" depth="0.5" position="0 2.475 2"></a-box>
       <!-- Key -->
-      <a-entity id="js--pentagonkey" class="js--interact" obj-model="obj: #pentagonkey-obj; mtl: #pentagonkey-mtl"
-        rotation="0 70 0" position="0.15 1.32 1.95" scale="0.1 0.1 0.1"></a-entity>
+      <a-entity id="js--pentagon" class="js--interact" rotation="0 70 0" position="0.15 1.32 1.95" scale="0.1 0.1 0.1" gltf-model="#pentagonkey">
+      </a-entity>
       <!-- Key Lock -->
       <a-box class="js--slot js--interact" color="red" position="0 1.2 2.34" rotation="-10 0 0" height="0.01"
         width="0.01" depth="0.01" opacity="0.0">
@@ -546,8 +604,7 @@
         </a-box>
 
         <!-- Sleutel -->
-        <a-entity position="-0.1 -0.05 -0.4" obj-model="obj: #triangleKey-obj; mtl: #triangleKey-mtl"
-          scale="0.08 0.08 0.08" rotation="0 45 0"></a-entity>
+        <a-entity position="-0.1 -0.05 -0.4" gltf-model="#triangleKey" scale="0.08 0.08 0.08" rotation="0 45 0"></a-entity>
 
       </a-plane>
     </a-box>

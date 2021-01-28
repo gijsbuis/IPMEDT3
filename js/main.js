@@ -36,6 +36,30 @@ window.onload = () => {
   const bekerCarry = document.getElementById("js--bekerCarry");
 
 
+  // Play video //
+    const video = document.getElementById("video");
+    const begin = document.getElementsByClassName("js--begin");
+    let door = document.getElementsByClassName("js--door");
+    let textVanish = document.getElementsByClassName("js--textVanish");
+
+    for (let i = 0; i < begin.length; i++) {
+      begin[i].addEventListener("click", function(evt){
+        textVanish[0].remove();
+        playVideo();
+        setTimeout(function(){
+          door[0].setAttribute("animation","property: rotation; to: 0 -90 0; dur: 1500; easing: linear; loop: false");
+          for (let i = 0; i < places.length; i++) {
+            places[i].classList.add("js--interact");
+            places[i].setAttribute("animation","property: opacity; to: 1; dur: 1500; easing: linear; loop: false");
+          }
+        }, 3000);
+      });
+    }
+
+    function playVideo(){
+      video.play();
+    }
+
   // Choose element //
     const elements = document.getElementsByClassName("js--element");
 
@@ -80,7 +104,7 @@ window.onload = () => {
 
   // Fill //
     const fill = document.getElementsByClassName("js--fill");
-    const colorArray = ["green","red","blue"];
+    const colorArray = ["#1496ba","#19ffaf","#d59f6a"];
     let fillLevel = 0;
 
     function fillCup(){
@@ -257,7 +281,7 @@ window.onload = () => {
       console.log("bot");
     }
     }
-    
+
 
     puzzleOneLeftNumberUp.addEventListener('click', function(event) {
       console.log("BOOOOMMMM");
