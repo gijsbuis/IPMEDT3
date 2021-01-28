@@ -61,6 +61,7 @@
         <a-asset-item id="triConsole" src="blender/triConsole.gltf"></a-asset-item>
         <a-asset-item id="pentaConsole" src="blender/pentaConsole.gltf"></a-asset-item>
         <a-asset-item id="cubeConsole" src="blender/cubeConsole.gltf"></a-asset-item>
+        <a-asset-item id="plant" src="blender/plant.gltf"></a-asset-item>
     </a-assets>
 
     <!-- <a-camera id="js--camera" position="0 1.6 7"> -->
@@ -179,6 +180,7 @@
 
     <!-- Starting room -->
     <a-entity position="0 1 14">
+      <a-entity gltf-model="#plant" position="-4 -0.5 1" scale="0.3 0.3 0.3"></a-entity>
       <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="5 1 0" rotation="0 -90 0"></a-plane>
       <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="-5 1 0" rotation="0 90 0">
         <a-box color="lightblue" opacity="0.8" repeat="1 2" height="1.5" width="2.5" depth="0.05" position="0 0.2 0.01"
@@ -416,6 +418,7 @@
 
     <!-- Kast -->
     <a-sphere position="-3.3 0 -9.6" radius="0.5" rotation="0 15">
+      <a-entity gltf-model="#plant" position="-5 0.1 1" scale="0.3 0.3 0.3"></a-entity>
       <a-entity gltf-model="#reageerbuizen" position="0 0.1 2" scale="0.03 0.03 0.03"></a-entity>
       <a-box material="src: #steel" height="5" width="0.05" depth="0.5" position="0.75 0 2"></a-box>
       <a-box material="src: #steel" height="5" width="0.05" depth="0.5" position="-0.75 0 2"></a-box>
