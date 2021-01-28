@@ -44,11 +44,6 @@ window.onload = () => {
     });
   }
 
-  bomb.addEventListener('click', function(event) {
-    console.log("BOOOOMMMM");
-    this.remove();
-  })
-
   const bekerCarry = document.getElementById("js--bekerCarry");
 
 
