@@ -251,11 +251,13 @@ window.onload = () => {
       let cubeSleutel = document.getElementById("js--cubeSleutel");
       setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
       setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
+      cubeSleutel.classList.add("js--interact");
       console.log("cheers");
     } else {
       console.log("bot");
     }
     }
+    
 
     puzzleOneLeftNumberUp.addEventListener('click', function(event) {
       console.log("BOOOOMMMM");
