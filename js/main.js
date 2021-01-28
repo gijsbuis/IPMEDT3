@@ -34,6 +34,7 @@ window.onload = () => {
   let box5 = document.getElementById("js--hold5");
   let antwoordText = document.getElementById("antwoordText");
   let papier = document.getElementById('js--papier');
+  let tracker = 0;
 
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
@@ -198,7 +199,6 @@ window.onload = () => {
 
 
     function addListeners() {
-      let tracker = 0;
       for (let i = 0; i < bekers.length; i++) {
         bekers[i].addEventListener('click', function(evt){
           if (hold == null) {
@@ -208,41 +208,41 @@ window.onload = () => {
               setTimeout(function(){papier.setAttribute("src", "#PapierRoze");},2000)
               setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box1.setAttribute("animation", "property: position; to: 0.8 1.25 1.2; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box1.setAttribute("animation", "property: position; to: 0.8 1.20 1.2; loop: false; dur: 3000");},4000)
               tracker = 1;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
             if (this.id == "js--hold2"){
               setTimeout(function(){papier.setAttribute("src", "#PapierRood");},2000)
               setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box2.setAttribute("animation", "property: position; to: 0.8 1.25 1.6; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box2.setAttribute("animation", "property: position; to: 0.8 1.20 1.6; loop: false; dur: 3000");},4000)
               tracker = 4;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
             if (this.id == "js--hold3"){
               setTimeout(function(){papier.setAttribute("src", "#PapierGroen");},2000)
               setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box3.setAttribute("animation", "property: position; to: 0.8 1.25 2; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box3.setAttribute("animation", "property: position; to: 0.8 1.20 2; loop: false; dur: 3000");},4000)
               tracker = 2;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
             if (this.id == "js--hold4"){
               setTimeout(function(){papier.setAttribute("src", "#PapierBlauw");},2000)
               setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box4.setAttribute("animation", "property: position; to: 0.8 1.25 0.4; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box4.setAttribute("animation", "property: position; to: 0.8 1.20 0.4; loop: false; dur: 3000");},4000)
               tracker = 6;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
             if (this.id == "js--hold5"){
               setTimeout(function(){papier.setAttribute("src", "#PapierPaars");},2000)
               setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.25 0.8; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.20 0.8; loop: false; dur: 3000");},4000)
               tracker = 8;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
           }
         });
@@ -274,24 +274,59 @@ window.onload = () => {
     let RfWaardes = ["1.5","1","3","0.75","6"];
     let randomNum = Math.floor(Math.random() * Math.floor(5));
     let ditAntwoord = RfWaardes[randomNum];
+    let button = document.getElementById("js--button");
+    button.addEventListener('click', function(event){
+      gameLogica();
+    });
     console.log(ditAntwoord);
     antwoordText.setAttribute("value", "Je bent op zoek naar een vloeistof met een 'Rf' waarde van " + ditAntwoord)
 
 
-    function gameLogica(tracker){
-      // instructietext
-      let Rf = 6 / tracker;
-      console.log(Rf);
-      if(Rf == ditAntwoord){
-        let vloeistof = document.getElementById("js--vloeistof");
-        let cubeSleutel = document.getElementById("js--cubeSleutel");
-        setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
-        setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
-        cubeSleutel.classList.add("js--interact");
-        console.log("cheers");
-      } else {
-        console.log("bot");
+
+
+    function gameLogica(){
+    let Rf = 6 / tracker;
+    if(Rf == ditAntwoord){
+      let vloeistof = document.getElementById("js--vloeistof");
+      let cubeSleutel = document.getElementById("js--cubeSleutel");
+      if(tracker == 1){
+        box1.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box1.setAttribute("animation", "property: position; to: 0.8 1.20 1.2; loop: false; dur: 2000");},4000)
       }
+      if(tracker == 4){
+        box2.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box2.setAttribute("animation", "property: position; to: 0.8 1.20 1.6; loop: false; dur: 2000");},4000)
+      }
+      if(tracker == 2){
+        box3.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box3.setAttribute("animation", "property: position; to: 0.8 1.20 2; loop: false; dur: 2000");},4000)
+      }
+      if(tracker == 6){
+        box4.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box4.setAttribute("animation", "property: position; to: 0.8 1.20 0.4; loop: false; dur: 2000");},4000)
+      }
+      if(tracker == 8){
+        box5.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.20 0.8; loop: false; dur: 2000");},4000)
+      }
+      setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
+      setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
+      cubeSleutel.classList.add("js--interact");
+      console.log("cheers");
+    } else {
+      console.log("bot");
+    }
+
     }
 
     // Attach to looking at the first keylock on the bomb
