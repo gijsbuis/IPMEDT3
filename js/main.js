@@ -338,7 +338,7 @@ window.onload = () => {
         setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
         setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.20 0.8; loop: false; dur: 2000");},4000)
       }
-      setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
+      setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.6 0; loop: false; dur: 1500")},4000);
       setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
       cubeSleutel.classList.add("js--interact");
       console.log("cheers");
