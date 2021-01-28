@@ -20,6 +20,7 @@ window.onload = () => {
   const triConsole = document.getElementById('js--triConsole');
   const cubeConsole = document.getElementById('js--cubeConsole');
   const pentaConsole = document.getElementById('js--pentaConsole');
+  const bars = document.getElementById('js--bars');
 
   let puzzleOneLeftNumber = 0;
   let puzzleOneMiddleNumber = 0;
@@ -29,6 +30,9 @@ window.onload = () => {
   let puzzleOneValueThree = document.getElementById('js--puzzle1--valueThree');
   let bekers = document.getElementsByClassName('js--bekers');
   let puzzleOneGotHint = false;
+  let puzzleOneComplete = false;
+  let puzzleTwoComplete = false;
+  let puzzleThreeComplete = false;
 
   let hold = null;
   let box1 = document.getElementById("js--hold1");
@@ -359,24 +363,34 @@ window.onload = () => {
       } else if (hold === 'triangleKey') {
         camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
         console.log("PUZZLE ONE COMPLETE");
+        puzzleOneComplete = true;
         hold = null;
-        console.log(hold);
+        puzzleCompletionCheck();
       }
     });
     pentaConsole.addEventListener('click', function(event) {
       console.log("Click console");
       camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
       console.log("PUZZLE TWO COMPLETE");
+      puzzleTwoComplete = true;
       hold = null;
-      console.log(hold);
+      puzzleCompletionCheck();
     });
     cubeConsole.addEventListener('click', function(event) {
       console.log("Click console");
       camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
       console.log("PUZZLE THREE COMPLETE");
+      puzzleThreeComplete = true;
       hold = null;
-      console.log(hold);
+      puzzleCompletionCheck();
     });
+
+    function puzzleCompletionCheck() {
+      if (puzzleOneComplete == true && puzzleTwoComplete == true && puzzleThreeComplete == true) {
+        console.log("GEHAALD, BOM ONTMANTELD!");
+        bars.setAttribute('animation','property: position; to: 0 10 1; dur: 2000; easing: linear; loop: false;');
+      }
+    }
 
     function puzzleOneHintAppear() {
       for (var i = 0; i < puzzleOneHints.length; i++) {
@@ -461,7 +475,7 @@ window.onload = () => {
 
     function openTriangleKeyBox() {
       for (var i = 0; i < triangleKeyBoxLock.length; i++) {
-        triangleKeyBoxLock[i].setAttribute("animation","property: opacity; to: 0.0; dur: 2000; easeing: linear; loop: false;");
+        triangleKeyBoxLock[i].setAttribute("animation","property: opacity; to: 0.0; dur: 2000; easing: linear; loop: false;");
       }
       setTimeout(function () {
         doosjeBovenkant.setAttribute("animation","property: rotation; to: -30 0 0; dur: 2000; easing: linear; loop: false");
