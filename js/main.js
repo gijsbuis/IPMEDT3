@@ -8,6 +8,7 @@ window.onload = () => {
   const triangleKeyBox = document.getElementById('js--keyBox');
   const triangleKeyBoxLock = document.getElementsByClassName('js--triangleKeyBoxLock');
   const puzzleOneLeftNumberUp = document.getElementById('js--puzzleOneLeftNumberUp');
+<<<<<<< Updated upstream
   const puzzleOneLeftNumberDown = document.getElementById('js--puzzleOneLeftNumberDown');
   const puzzleOneMiddleNumberUp = document.getElementById('js--puzzleOneMiddleNumberUp');
   const puzzleOneMiddleNumberDown = document.getElementById('js--puzzleOneMiddleNumberDown');
@@ -24,6 +25,9 @@ window.onload = () => {
   let puzzleOneValueTwo = document.getElementById('js--puzzle1--valueTwo');
   let puzzleOneValueThree = document.getElementById('js--puzzle1--valueThree');
   let pickups = document.getElementsByClassName('js--pickup');
+=======
+  let bekers = document.getElementsByClassName('js--bekers');
+>>>>>>> Stashed changes
   let hold = null;
   let box1 = document.getElementById("js--hold1");
   let box2 = document.getElementById("js--hold2");
@@ -197,8 +201,8 @@ window.onload = () => {
 
     function addListeners() {
       let tracker = 0;
-      for (let i = 0; i < pickups.length; i++) {
-        pickups[i].addEventListener('click', function(evt){
+      for (let i = 0; i < bekers.length; i++) {
+        bekers[i].addEventListener('click', function(evt){
           if (hold == null) {
             this.setAttribute("animation", "property: position; to: -0.5 1.5 -3; loop: false; dur: 2000");
 
@@ -270,7 +274,7 @@ window.onload = () => {
       console.log("bot");
     }
     }
-    
+
 
     // Attach to looking at the first keylock on the bomb
     puzzleOneHintAppear();
