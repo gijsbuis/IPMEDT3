@@ -6,9 +6,26 @@ window.onload = () => {
   const placeholders = document.getElementsByClassName('js--placeholder');
   const doosjeBovenkant = document.getElementById('js--rotateBoxTop');
   const triangleKeyBox = document.getElementById('js--keyBox');
-  const triangleKeyBoxLock = document.getElementById('js--triangleKeyBoxLock');
+  const triangleKeyBoxLock = document.getElementsByClassName('js--triangleKeyBoxLock');
   const puzzleOneLeftNumberUp = document.getElementById('js--puzzleOneLeftNumberUp');
-  let pickups = document.getElementsByClassName('js--pickup');
+  const puzzleOneLeftNumberDown = document.getElementById('js--puzzleOneLeftNumberDown');
+  const puzzleOneMiddleNumberUp = document.getElementById('js--puzzleOneMiddleNumberUp');
+  const puzzleOneMiddleNumberDown = document.getElementById('js--puzzleOneMiddleNumberDown');
+  const puzzleOneRightNumberUp = document.getElementById('js--puzzleOneRightNumberUp');
+  const puzzleOneRightNumberDown = document.getElementById('js--puzzleOneRightNumberDown');
+  const puzzleOnePlanes = document.getElementsByClassName('js--puzzleOnePlane');
+  const puzzleOneTriangles = document.getElementsByClassName('js--puzzleOneTriangle');
+  const puzzleOneHints = document.getElementsByClassName('js--puzzleOneHint');
+  const pickups = document.getElementsByClassName('js--pickup')
+
+  let puzzleOneLeftNumber = 0;
+  let puzzleOneMiddleNumber = 0;
+  let puzzleOneRightNumber = 0;
+  let puzzleOneValueOne = document.getElementById('js--puzzle1--valueOne');
+  let puzzleOneValueTwo = document.getElementById('js--puzzle1--valueTwo');
+  let puzzleOneValueThree = document.getElementById('js--puzzle1--valueThree');
+  let bekers = document.getElementsByClassName('js--bekers');
+
   let hold = null;
   let box1 = document.getElementById("js--hold1");
   let box2 = document.getElementById("js--hold2");
@@ -17,6 +34,7 @@ window.onload = () => {
   let box5 = document.getElementById("js--hold5");
   let antwoordText = document.getElementById("antwoordText");
   let papier = document.getElementById('js--papier');
+  let tracker = 0;
 
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
@@ -25,13 +43,6 @@ window.onload = () => {
       camera.setAttribute('animation', att.value);
     });
   }
-
-  bomb.addEventListener('click', function(event) {
-    console.log("BOOOOMMMM");
-    this.remove();
-  })
-
-  openTriangleKeyBox();
 
   const bekerCarry = document.getElementById("js--bekerCarry");
 
@@ -207,9 +218,8 @@ window.onload = () => {
 
 
     function addListeners() {
-      let tracker = 0;
-      for (let i = 0; i < pickups.length; i++) {
-        pickups[i].addEventListener('click', function(evt){
+      for (let i = 0; i < bekers.length; i++) {
+        bekers[i].addEventListener('click', function(evt){
           if (hold == null) {
             this.setAttribute("animation", "property: position; to: -0.5 1.5 -3; loop: false; dur: 2000");
 
@@ -217,44 +227,65 @@ window.onload = () => {
               setTimeout(function(){papier.setAttribute("src", "#PapierRoze");},2000)
               setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box1.setAttribute("animation", "property: position; to: 0.8 1.25 1.2; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box1.setAttribute("animation", "property: position; to: 0.8 1.20 1.2; loop: false; dur: 3000");},4000)
               tracker = 1;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
             if (this.id == "js--hold2"){
               setTimeout(function(){papier.setAttribute("src", "#PapierRood");},2000)
               setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box2.setAttribute("animation", "property: position; to: 0.8 1.25 1.6; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box2.setAttribute("animation", "property: position; to: 0.8 1.20 1.6; loop: false; dur: 3000");},4000)
               tracker = 4;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
             if (this.id == "js--hold3"){
               setTimeout(function(){papier.setAttribute("src", "#PapierGroen");},2000)
               setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box3.setAttribute("animation", "property: position; to: 0.8 1.25 2; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box3.setAttribute("animation", "property: position; to: 0.8 1.20 2; loop: false; dur: 3000");},4000)
               tracker = 2;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
             if (this.id == "js--hold4"){
               setTimeout(function(){papier.setAttribute("src", "#PapierBlauw");},2000)
               setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box4.setAttribute("animation", "property: position; to: 0.8 1.25 0.4; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box4.setAttribute("animation", "property: position; to: 0.8 1.20 0.4; loop: false; dur: 3000");},4000)
               tracker = 6;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
             if (this.id == "js--hold5"){
               setTimeout(function(){papier.setAttribute("src", "#PapierPaars");},2000)
               setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},2000)
               setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3000)
-              setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.25 0.8; loop: false; dur: 3000");},4000)
+              setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.20 0.8; loop: false; dur: 3000");},4000)
               tracker = 8;
-              gameLogica(tracker);
+              console.log("tracker: " + tracker);
             }
           }
         });
+      }
+
+      for (var i = 0; i < pickups.length; i++) {
+        pickups[i].addEventListener('click', function(event) {
+          if (hold == null) {
+            console.log(this.id);
+            if (this.id === 'js--triangleKey') {
+              camera.innerHTML += '<a-entity id="js--triangleKey" class="js--interact js--pickup" position="0.75 -0.5 -1" obj-model="obj: #triangleKey-obj; mtl: #triangleKey-mtl" scale="0.08 0.08 0.08" rotation="45 0 0"></a-entity>';
+              hold = "triangleKey";
+              this.remove();
+            } else if (this.id === 'js--pentagonKey') {
+              camera.innerHTML += '<a-entity id="js--pentagonKey" class="js--interact js--pickup" position="0.75 -0.5 -1" obj-model="obj: #pentagonkey-obj; mtl: #pentagonkey-mtl" scale="0.08 0.08 0.08" rotation="45 0 0" ></a-entity>';
+              hold = "pentagonKey";
+              this.remove();
+            } else if (this.id === 'js--cubeSleutel') {
+              camera.innerHTML += '<a-entity id="js--cubeSleutel" class="js--interact js--pickup" position="0.75 -0.6 -0.75" gltf-model="#brassKey" scale="0.04 0.04 0.04" rotation="-45 0 -90"></a-entity>';
+              hold = "cubeKey";
+              this.remove();
+            }
+          }
+        })
       }
     }
     addListeners();
@@ -262,17 +293,51 @@ window.onload = () => {
     let RfWaardes = ["1.5","1","3","0.75","6"];
     let randomNum = Math.floor(Math.random() * Math.floor(5));
     let ditAntwoord = RfWaardes[randomNum];
+    let button = document.getElementById("js--button");
+    button.addEventListener('click', function(event){
+      gameLogica();
+    });
     console.log(ditAntwoord);
     antwoordText.setAttribute("value", "Je bent op zoek naar een vloeistof met een 'Rf' waarde van " + ditAntwoord)
 
 
-    function gameLogica(tracker){
-      // instructietext
+
+
+    function gameLogica(){
     let Rf = 6 / tracker;
-    console.log(Rf);
     if(Rf == ditAntwoord){
       let vloeistof = document.getElementById("js--vloeistof");
       let cubeSleutel = document.getElementById("js--cubeSleutel");
+      if(tracker == 1){
+        box1.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box1.setAttribute("animation", "property: position; to: 0.8 1.20 1.2; loop: false; dur: 2000");},4000)
+      }
+      if(tracker == 4){
+        box2.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box2.setAttribute("animation", "property: position; to: 0.8 1.20 1.6; loop: false; dur: 2000");},4000)
+      }
+      if(tracker == 2){
+        box3.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box3.setAttribute("animation", "property: position; to: 0.8 1.20 2; loop: false; dur: 2000");},4000)
+      }
+      if(tracker == 6){
+        box4.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box4.setAttribute("animation", "property: position; to: 0.8 1.20 0.4; loop: false; dur: 2000");},4000)
+      }
+      if(tracker == 8){
+        box5.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+        setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+        setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+        setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.20 0.8; loop: false; dur: 2000");},4000)
+      }
       setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
       setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
       cubeSleutel.classList.add("js--interact");
@@ -280,17 +345,97 @@ window.onload = () => {
     } else {
       console.log("bot");
     }
+
     }
 
+    // Attach to looking at the first keylock on the bomb
+    puzzleOneHintAppear();
+
+    function puzzleOneHintAppear() {
+      for (var i = 0; i < puzzleOneHints.length; i++) {
+        puzzleOneHints[i].setAttribute('opacity', '1');
+      }
+    }
 
     puzzleOneLeftNumberUp.addEventListener('click', function(event) {
-      console.log("BOOOOMMMM");
-      this.remove();
-    })
+      if (puzzleOneLeftNumber === 9) {
+        puzzleOneLeftNumber = 0;
+      } else {
+        puzzleOneLeftNumber += 1;
+      }
+      puzzleOneValueOne.setAttribute('value', puzzleOneLeftNumber);
+      updatePuzzleOne();
+    });
 
+    puzzleOneLeftNumberDown.addEventListener('click', function(event) {
+      if (puzzleOneLeftNumber === 0) {
+        puzzleOneLeftNumber = 9;
+      } else {
+        puzzleOneLeftNumber -= 1;
+      }
+      puzzleOneValueOne.setAttribute('value', puzzleOneLeftNumber);
+      updatePuzzleOne();
+    });
+
+    puzzleOneMiddleNumberUp.addEventListener('click', function(event) {
+      if (puzzleOneMiddleNumber === 9) {
+        puzzleOneMiddleNumber = 0;
+      } else {
+        puzzleOneMiddleNumber += 1;
+      }
+      puzzleOneValueTwo.setAttribute('value', puzzleOneMiddleNumber);
+      updatePuzzleOne();
+    });
+
+    puzzleOneMiddleNumberDown.addEventListener('click', function(event) {
+      if (puzzleOneMiddleNumber === 0) {
+        puzzleOneMiddleNumber = 9;
+      } else {
+        puzzleOneMiddleNumber -= 1;
+      }
+      puzzleOneValueTwo.setAttribute('value', puzzleOneMiddleNumber);
+      updatePuzzleOne();
+    });
+
+    puzzleOneRightNumberUp.addEventListener('click', function(event) {
+      if (puzzleOneRightNumber === 9) {
+        puzzleOneRightNumber = 0;
+      } else {
+        puzzleOneRightNumber += 1;
+      }
+      puzzleOneValueThree.setAttribute('value', puzzleOneRightNumber);
+      updatePuzzleOne();
+    });
+
+    puzzleOneRightNumberDown.addEventListener('click', function(event) {
+      if (puzzleOneRightNumber === 0) {
+        puzzleOneRightNumber = 9;
+      } else {
+        puzzleOneRightNumber -= 1;
+      }
+      puzzleOneValueThree.setAttribute('value', puzzleOneRightNumber);
+      updatePuzzleOne();
+    });
+
+    function updatePuzzleOne() {
+      if (puzzleOneLeftNumber === 9 && puzzleOneMiddleNumber === 9 && puzzleOneRightNumber === 1) {
+        openTriangleKeyBox();
+        for (var i = 0; i < puzzleOnePlanes.length; i++) {
+          puzzleOnePlanes[i].setAttribute('color', 'green');
+        }
+        // In the second for loop i needs to stay at 0 because the array of HTML Elements
+        // changes after every removal, which means first it's 0-5, then 0-4, 0-3
+        // meaning if I use i++ it will remove only half of the array
+        for (var i = 0; i < puzzleOneTriangles.length; i) {
+          puzzleOneTriangles[i].remove();
+        }
+      }
+    }
 
     function openTriangleKeyBox() {
-      triangleKeyBoxLock.setAttribute("animation","property: opacity; to: 0.0; dur: 2000; easeing: linear; loop: false;");
+      for (var i = 0; i < triangleKeyBoxLock.length; i++) {
+        triangleKeyBoxLock[i].setAttribute("animation","property: opacity; to: 0.0; dur: 2000; easeing: linear; loop: false;");
+      }
       setTimeout(function () {
         doosjeBovenkant.setAttribute("animation","property: rotation; to: -30 0 0; dur: 2000; easing: linear; loop: false");
         setTimeout(function () {
