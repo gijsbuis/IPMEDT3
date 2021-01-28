@@ -23,7 +23,8 @@ window.onload = () => {
   let puzzleOneValueOne = document.getElementById('js--puzzle1--valueOne');
   let puzzleOneValueTwo = document.getElementById('js--puzzle1--valueTwo');
   let puzzleOneValueThree = document.getElementById('js--puzzle1--valueThree');
-  let pickups = document.getElementsByClassName('js--pickup');
+  let bekers = document.getElementsByClassName('js--bekers');
+
   let hold = null;
   let box1 = document.getElementById("js--hold1");
   let box2 = document.getElementById("js--hold2");
@@ -197,8 +198,8 @@ window.onload = () => {
 
     function addListeners() {
       let tracker = 0;
-      for (let i = 0; i < pickups.length; i++) {
-        pickups[i].addEventListener('click', function(evt){
+      for (let i = 0; i < bekers.length; i++) {
+        bekers[i].addEventListener('click', function(evt){
           if (hold == null) {
             this.setAttribute("animation", "property: position; to: -0.5 1.5 -3; loop: false; dur: 2000");
 
@@ -264,6 +265,7 @@ window.onload = () => {
       let cubeSleutel = document.getElementById("js--cubeSleutel");
       setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
       setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
+      cubeSleutel.classList.add("js--interact");
       console.log("cheers");
     } else {
       console.log("bot");
