@@ -57,7 +57,7 @@
     </a-assets>
 
     <!-- <a-camera id="js--camera" position="0 1.6 7"> -->
-    <a-camera id="js--camera" position="0 1.6 7">
+    <a-camera id="js--camera" position="0 1.6 16">
       <a-entity
         animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
         animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -135,8 +135,9 @@
     </a-plane>
 
     <!-- Muur voor -->
-    <a-plane material="src: #wall" repeat="10 3" height="5" width="18" position="0 2 9" rotation="180 0 0">
-    </a-plane>
+    <a-plane material="src: #wall" repeat="10 3" height="5" width="18" position="0 5.52 9" rotation="180 0 0"></a-plane>
+    <a-plane material="src: #wall" repeat="5 3" height="5" width="9" position="-8.15 0.52 9" rotation="180 0 0"></a-plane>
+    <a-plane material="src: #wall" repeat="7 3" height="5" width="14" position="4.85 0.52 9" rotation="180 0 0"></a-plane>
 
     <!-- Muur achter -->
     <a-plane material="src: #wall" repeat="10 3" height="5" width="18" position="0 2 -9" rotation="0 0 0">
@@ -196,7 +197,10 @@
       </a-plane>
       <!-- <a-plane class="js--interact" material="src: #gold" repeat="10 3" height="5" width="10" position="0 1 -6" rotation="0 0 0"></a-plane> -->
       <!-- Wall front -->
-      <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="0 1 -5" rotation="0 0 0" physical-body>
+      <a-plane material="src: #wall" repeat="10 3" height="0" width="0" position="0 1 -5" opacity="0" rotation="0 0 0">
+      <a-plane material="src: #wall" repeat="20 3" height="5" width="20" position="-2.9 3.52 0" rotation="0 0 0"></a-plane>
+      <a-plane material="src: #wall" repeat="7.3 3" height="5" width="7.3" position="1.5 -1.48 0" rotation="0 0 0"></a-plane>
+      <a-plane material="src: #wall" repeat="1.5 3" height="5" width="1.5" position="-4.4 -1.48 0" rotation="0 0 0"></a-plane>
         <!-- Deur -->
         <a-entity class="js--door" position="-3.65 -0.5 0" radius="0.1">
           <a-box material="src: #darkwood2" repeat="1 2" height="3" width="1.5" depth="0.1" position="0.75 0 0"
