@@ -43,6 +43,7 @@ window.onload = () => {
   let antwoordText = document.getElementById("antwoordText");
   let papier = document.getElementById('js--papier');
   let tracker = 0;
+  let cheeringAudio = new Audio('assets/cheering.mp3');
 
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
@@ -388,6 +389,7 @@ window.onload = () => {
     function puzzleCompletionCheck() {
       if (puzzleOneComplete == true && puzzleTwoComplete == true && puzzleThreeComplete == true) {
         console.log("GEHAALD, BOM ONTMANTELD!");
+        cheeringAudio.play();
         bars.setAttribute('animation','property: position; to: 0 10 1; dur: 2000; easing: linear; loop: false;');
       }
     }
