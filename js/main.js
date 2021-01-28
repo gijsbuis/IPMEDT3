@@ -16,6 +16,7 @@ window.onload = () => {
   const puzzleOnePlanes = document.getElementsByClassName('js--puzzleOnePlane');
   const puzzleOneTriangles = document.getElementsByClassName('js--puzzleOneTriangle');
   const puzzleOneHints = document.getElementsByClassName('js--puzzleOneHint');
+  const pickups = document.getElementsByClassName('js--pickup')
 
   let puzzleOneLeftNumber = 0;
   let puzzleOneMiddleNumber = 0;
@@ -246,6 +247,27 @@ window.onload = () => {
           }
         });
       }
+
+      for (var i = 0; i < pickups.length; i++) {
+        pickups[i].addEventListener('click', function(event) {
+          if (hold == null) {
+            console.log(this.id);
+            if (this.id === 'js--triangleKey') {
+              camera.innerHTML += '<a-entity id="js--triangleKey" class="js--interact js--pickup" position="0.75 -0.5 -1" obj-model="obj: #triangleKey-obj; mtl: #triangleKey-mtl" scale="0.08 0.08 0.08" rotation="45 0 0"></a-entity>';
+              hold = "triangleKey";
+              this.remove();
+            } else if (this.id === 'js--pentagonKey') {
+              camera.innerHTML += '<a-entity id="js--pentagonKey" class="js--interact js--pickup" position="0.75 -0.5 -1" obj-model="obj: #pentagonkey-obj; mtl: #pentagonkey-mtl" scale="0.08 0.08 0.08" rotation="45 0 0" ></a-entity>';
+              hold = "pentagonKey";
+              this.remove();
+            } else if (this.id === 'js--cubeSleutel') {
+              camera.innerHTML += '<a-entity id="js--cubeSleutel" class="js--interact js--pickup" position="0.75 -0.6 -0.75" gltf-model="#brassKey" scale="0.04 0.04 0.04" rotation="-45 0 -90"></a-entity>';
+              hold = "cubeKey";
+              this.remove();
+            }
+          }
+        })
+      }
     }
     addListeners();
 
@@ -258,18 +280,18 @@ window.onload = () => {
 
     function gameLogica(tracker){
       // instructietext
-    let Rf = 6 / tracker;
-    console.log(Rf);
-    if(Rf == ditAntwoord){
-      let vloeistof = document.getElementById("js--vloeistof");
-      let cubeSleutel = document.getElementById("js--cubeSleutel");
-      setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
-      setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
-      cubeSleutel.classList.add("js--interact");
-      console.log("cheers");
-    } else {
-      console.log("bot");
-    }
+      let Rf = 6 / tracker;
+      console.log(Rf);
+      if(Rf == ditAntwoord){
+        let vloeistof = document.getElementById("js--vloeistof");
+        let cubeSleutel = document.getElementById("js--cubeSleutel");
+        setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
+        setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
+        cubeSleutel.classList.add("js--interact");
+        console.log("cheers");
+      } else {
+        console.log("bot");
+      }
     }
 
     // Attach to looking at the first keylock on the bomb

@@ -209,10 +209,7 @@
       <a-cylinder height="0.6" position="-0.5 1.1 3" radius="0.25" opacity="0.4" open-ended="false">
         <a-cylinder id="js--vloeistof" height="0.3" position="0 0 0" radius="0.22" opacity="0.5" color="yellow">
         </a-cylinder>
-        <a-entity id="js--cubeSleutel" rotation="0 90 20" position="0 0 0" gltf-model="#brassKey"
-          scale="0.04 0.04 0.04">
-
-        </a-entity>
+        <a-entity id="js--cubeSleutel" class="js--interact js--pickup" rotation="0 90 20" position="0 1 0" gltf-model="#brassKey" scale="0.04 0.04 0.04"></a-entity>
 
       </a-cylinder>
       <!-- Roze beker-->
@@ -296,11 +293,6 @@
     <a-box color="white" position="8.95 3 5" height="0.75" depth="0.75" width="0.1"></a-box>
     <a-box color="white" position="8.95 3 -5" height="0.75" depth="0.75" width="0.1"></a-box>
 
-    <!-- Pickupable objects -->
-
-
-
-
     <!-- <a-cone id="js--bekerCarry" color="green" position="1 1 -1" radius-bottom="0.01" radius-top="0.01" height="0.1" opacity="0.0" scale="0.7 0.7 0.7">
       <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
       <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
@@ -323,8 +315,7 @@
       <a-box material="src: #steel" height="0.05" width="1.45" depth="0.5" position="0 1.8555 2"></a-box>
       <a-box material="src: #steel" height="0.05" width="1.45" depth="0.5" position="0 2.475 2"></a-box>
       <!-- Key -->
-      <a-entity id="js--pentagonkey" class="js--interact" obj-model="obj: #pentagonkey-obj; mtl: #pentagonkey-mtl"
-        rotation="0 70 0" position="0.15 1.32 1.95" scale="0.1 0.1 0.1"></a-entity>
+      <a-entity id="js--pentagonKey" class="js--interact js--pickup" obj-model="obj: #pentagonkey-obj; mtl: #pentagonkey-mtl" rotation="0 70 0" position="0.15 1.32 1.95" scale="0.1 0.1 0.1"></a-entity>
       <!-- Key Lock -->
       <a-box class="js--slot js--interact" color="red" position="0 1.2 2.34" rotation="-10 0 0" height="0.01"
         width="0.01" depth="0.01" opacity="0.0">
@@ -536,12 +527,9 @@
         </a-entity>
 
         <!-- Sleutel -->
-        <a-entity class="js--interact js--pickup" position="-0.1 -0.05 -0.4" obj-model="obj: #triangleKey-obj; mtl: #triangleKey-mtl" scale="0.08 0.08 0.08" rotation="0 45 0"></a-entity>
+        <a-entity id="js--triangleKey" class="js--interact js--pickup" position="-0.1 -0.05 -0.4" obj-model="obj: #triangleKey-obj; mtl: #triangleKey-mtl" scale="0.08 0.08 0.08" rotation="0 45 0"></a-entity>
       </a-plane>
     </a-box>
-
-
-
 
   <a-entity class="puzzleOne" position="-8.99 2.5 1" rotation="0 90 0">
     <a-entity class="puzzleOne--leftNumber">
@@ -571,18 +559,7 @@
         <a-text value="E27" color="black" align="center" width="10"></a-text>
       </a-plane>
     </a-entity>
-    <a-entity class="puzzleOne--rightNumber" position="1.5 0 0">
-      <a-triangle id="js--puzzleOneRightNumberUp" class="js--puzzleOneTriangle js--interact" color="grey" scale="0.5 0.5 0.5" position="0 0.8 0"></a-triangle>
-      <a-plane class="js--puzzleOnePlane" color="white" position="0 0 0" width="0.75" align="center">
-        <a-text id="js--puzzle1--valueThree" value="0" color="black" align="center" width="10"></a-text>
-      </a-plane>
-      <a-triangle id="js--puzzleOneRightNumberDown" class="js--puzzleOneTriangle js--interact" color="grey" scale="0.5 0.5 0.5" rotation="0 0 180" position="0 -0.8 0"></a-triangle>
-    </a-entity>
-    <a-entity class="puzzleOne--E27" position="2.25 0 0">
-      <a-plane class="js--puzzleOnePlane" color="white" position="0 0 0" width="1" align="center">
-        <a-text value="E27" color="black" align="center" width="10"></a-text>
-      </a-plane>
-    </a-entity></a-entity>
+  </a-entity>
 
   <!-- PuzzleOneHint -->
   <a-entity position="-7.5 1.5 3.5" rotation="0 135 0" opacity="0">
