@@ -17,6 +17,9 @@ window.onload = () => {
   const puzzleOneTriangles = document.getElementsByClassName('js--puzzleOneTriangle');
   const puzzleOneHints = document.getElementsByClassName('js--puzzleOneHint');
   const pickups = document.getElementsByClassName('js--pickup')
+  const triConsole = document.getElementById('js--triConsole');
+  const cubeConsole = document.getElementById('js--cubeConsole');
+  const pentaConsole = document.getElementById('js--pentaConsole');
 
   let puzzleOneLeftNumber = 0;
   let puzzleOneMiddleNumber = 0;
@@ -25,6 +28,7 @@ window.onload = () => {
   let puzzleOneValueTwo = document.getElementById('js--puzzle1--valueTwo');
   let puzzleOneValueThree = document.getElementById('js--puzzle1--valueThree');
   let bekers = document.getElementsByClassName('js--bekers');
+  let puzzleOneGotHint = false;
 
   let hold = null;
   let box1 = document.getElementById("js--hold1");
@@ -347,8 +351,32 @@ window.onload = () => {
       }
     }
 
-    // Attach to looking at the first keylock on the bomb
-    puzzleOneHintAppear();
+    triConsole.addEventListener('click', function(event) {
+      console.log("Click console");
+      if (puzzleOneGotHint == false) {
+        puzzleOneHintAppear();
+        puzzleOneGotHint = true;
+      } else if (hold === 'triangleKey') {
+        camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
+        console.log("PUZZLE ONE COMPLETE");
+        hold = null;
+        console.log(hold);
+      }
+    });
+    pentaConsole.addEventListener('click', function(event) {
+      console.log("Click console");
+      camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
+      console.log("PUZZLE TWO COMPLETE");
+      hold = null;
+      console.log(hold);
+    });
+    cubeConsole.addEventListener('click', function(event) {
+      console.log("Click console");
+      camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
+      console.log("PUZZLE THREE COMPLETE");
+      hold = null;
+      console.log(hold);
+    });
 
     function puzzleOneHintAppear() {
       for (var i = 0; i < puzzleOneHints.length; i++) {
