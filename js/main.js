@@ -304,48 +304,47 @@ window.onload = () => {
 
 
     function gameLogica(){
-    let Rf = 6 / tracker;
-    if(Rf == ditAntwoord){
-      let vloeistof = document.getElementById("js--vloeistof");
-      let cubeSleutel = document.getElementById("js--cubeSleutel");
-      if(tracker == 1){
-        box1.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
-        setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
-        setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
-        setTimeout(function(){box1.setAttribute("animation", "property: position; to: 0.8 1.20 1.2; loop: false; dur: 2000");},4000)
+      let Rf = 6 / tracker;
+      if(Rf == ditAntwoord){
+        let vloeistof = document.getElementById("js--vloeistof");
+        let cubeSleutel = document.getElementById("js--cubeSleutel");
+        if(tracker == 1){
+          box1.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+          setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+          setTimeout(function(){box1.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+          setTimeout(function(){box1.setAttribute("animation", "property: position; to: 0.8 1.20 1.2; loop: false; dur: 2000");},4000)
+        }
+        if(tracker == 4){
+          box2.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+          setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+          setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+          setTimeout(function(){box2.setAttribute("animation", "property: position; to: 0.8 1.20 1.6; loop: false; dur: 2000");},4000)
+        }
+        if(tracker == 2){
+          box3.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+          setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+          setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+          setTimeout(function(){box3.setAttribute("animation", "property: position; to: 0.8 1.20 2; loop: false; dur: 2000");},4000)
+        }
+        if(tracker == 6){
+          box4.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+          setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+          setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+          setTimeout(function(){box4.setAttribute("animation", "property: position; to: 0.8 1.20 0.4; loop: false; dur: 2000");},4000)
+        }
+        if(tracker == 8){
+          box5.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
+          setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
+          setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
+          setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.20 0.8; loop: false; dur: 2000");},4000)
+        }
+        setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
+        setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
+        cubeSleutel.classList.add("js--interact");
+        console.log("cheers");
+      } else {
+        console.log("bot");
       }
-      if(tracker == 4){
-        box2.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
-        setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
-        setTimeout(function(){box2.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
-        setTimeout(function(){box2.setAttribute("animation", "property: position; to: 0.8 1.20 1.6; loop: false; dur: 2000");},4000)
-      }
-      if(tracker == 2){
-        box3.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
-        setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
-        setTimeout(function(){box3.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
-        setTimeout(function(){box3.setAttribute("animation", "property: position; to: 0.8 1.20 2; loop: false; dur: 2000");},4000)
-      }
-      if(tracker == 6){
-        box4.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
-        setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
-        setTimeout(function(){box4.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
-        setTimeout(function(){box4.setAttribute("animation", "property: position; to: 0.8 1.20 0.4; loop: false; dur: 2000");},4000)
-      }
-      if(tracker == 8){
-        box5.setAttribute("animation", "property: position; to: -0.5 2 3; loop: false; dur: 2000");
-        setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 90 45 0; loop: false; dur: 300");},3000)
-        setTimeout(function(){box5.setAttribute("animation", "property: rotation; to: 0 0 0; loop: false; dur: 300");},3500)
-        setTimeout(function(){box5.setAttribute("animation", "property: position; to: 0.8 1.20 0.8; loop: false; dur: 2000");},4000)
-      }
-      setTimeout(function(){cubeSleutel.setAttribute("animation", "property: position; to: 0 0.3 0; loop: false; dur: 1500")},4000);
-      setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
-      cubeSleutel.classList.add("js--interact");
-      console.log("cheers");
-    } else {
-      console.log("bot");
-    }
-
     }
 
     // Attach to looking at the first keylock on the bomb
@@ -418,7 +417,7 @@ window.onload = () => {
     });
 
     function updatePuzzleOne() {
-      if (puzzleOneLeftNumber === 9 && puzzleOneMiddleNumber === 9 && puzzleOneRightNumber === 1) {
+      if (puzzleOneLeftNumber === 9 && puzzleOneMiddleNumber === 6 && puzzleOneRightNumber === 1) {
         openTriangleKeyBox();
         for (var i = 0; i < puzzleOnePlanes.length; i++) {
           puzzleOnePlanes[i].setAttribute('color', 'green');
