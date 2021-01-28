@@ -6,13 +6,23 @@ window.onload = () => {
   const placeholders = document.getElementsByClassName('js--placeholder');
   const doosjeBovenkant = document.getElementById('js--rotateBoxTop');
   const triangleKeyBox = document.getElementById('js--keyBox');
-  const triangleKeyBoxLock = document.getElementById('js--triangleKeyBoxLock');
+  const triangleKeyBoxLock = document.getElementsByClassName('js--triangleKeyBoxLock');
   const puzzleOneLeftNumberUp = document.getElementById('js--puzzleOneLeftNumberUp');
   const puzzleOneLeftNumberDown = document.getElementById('js--puzzleOneLeftNumberDown');
+  const puzzleOneMiddleNumberUp = document.getElementById('js--puzzleOneMiddleNumberUp');
+  const puzzleOneMiddleNumberDown = document.getElementById('js--puzzleOneMiddleNumberDown');
+  const puzzleOneRightNumberUp = document.getElementById('js--puzzleOneRightNumberUp');
+  const puzzleOneRightNumberDown = document.getElementById('js--puzzleOneRightNumberDown');
+  const puzzleOnePlanes = document.getElementsByClassName('js--puzzleOnePlane');
+  const puzzleOneTriangles = document.getElementsByClassName('js--puzzleOneTriangle');
+  const puzzleOneHints = document.getElementsByClassName('js--puzzleOneHint');
 
   let puzzleOneLeftNumber = 0;
-
+  let puzzleOneMiddleNumber = 0;
+  let puzzleOneRightNumber = 0;
   let puzzleOneValueOne = document.getElementById('js--puzzle1--valueOne');
+  let puzzleOneValueTwo = document.getElementById('js--puzzle1--valueTwo');
+  let puzzleOneValueThree = document.getElementById('js--puzzle1--valueThree');
   let pickups = document.getElementsByClassName('js--pickup');
   let hold = null;
   let box1 = document.getElementById("js--hold1");
@@ -35,8 +45,6 @@ window.onload = () => {
     console.log("BOOOOMMMM");
     this.remove();
   })
-
-  openTriangleKeyBox();
 
   const bekerCarry = document.getElementById("js--bekerCarry");
 
@@ -262,6 +270,15 @@ window.onload = () => {
     }
     }
 
+    // Attach to looking at the first keylock on the bomb
+    puzzleOneHintAppear();
+
+    function puzzleOneHintAppear() {
+      for (var i = 0; i < puzzleOneHints.length; i++) {
+        puzzleOneHints[i].setAttribute('opacity', '1');
+      }
+    }
+
     puzzleOneLeftNumberUp.addEventListener('click', function(event) {
       if (puzzleOneLeftNumber === 9) {
         puzzleOneLeftNumber = 0;
@@ -269,7 +286,7 @@ window.onload = () => {
         puzzleOneLeftNumber += 1;
       }
       puzzleOneValueOne.setAttribute('value', puzzleOneLeftNumber);
-      console.log(puzzleOneLeftNumber);
+      updatePuzzleOne();
     });
 
     puzzleOneLeftNumberDown.addEventListener('click', function(event) {
@@ -279,12 +296,68 @@ window.onload = () => {
         puzzleOneLeftNumber -= 1;
       }
       puzzleOneValueOne.setAttribute('value', puzzleOneLeftNumber);
-      console.log(puzzleOneLeftNumber);
+      updatePuzzleOne();
     });
 
+    puzzleOneMiddleNumberUp.addEventListener('click', function(event) {
+      if (puzzleOneMiddleNumber === 9) {
+        puzzleOneMiddleNumber = 0;
+      } else {
+        puzzleOneMiddleNumber += 1;
+      }
+      puzzleOneValueTwo.setAttribute('value', puzzleOneMiddleNumber);
+      updatePuzzleOne();
+    });
+
+    puzzleOneMiddleNumberDown.addEventListener('click', function(event) {
+      if (puzzleOneMiddleNumber === 0) {
+        puzzleOneMiddleNumber = 9;
+      } else {
+        puzzleOneMiddleNumber -= 1;
+      }
+      puzzleOneValueTwo.setAttribute('value', puzzleOneMiddleNumber);
+      updatePuzzleOne();
+    });
+
+    puzzleOneRightNumberUp.addEventListener('click', function(event) {
+      if (puzzleOneRightNumber === 9) {
+        puzzleOneRightNumber = 0;
+      } else {
+        puzzleOneRightNumber += 1;
+      }
+      puzzleOneValueThree.setAttribute('value', puzzleOneRightNumber);
+      updatePuzzleOne();
+    });
+
+    puzzleOneRightNumberDown.addEventListener('click', function(event) {
+      if (puzzleOneRightNumber === 0) {
+        puzzleOneRightNumber = 9;
+      } else {
+        puzzleOneRightNumber -= 1;
+      }
+      puzzleOneValueThree.setAttribute('value', puzzleOneRightNumber);
+      updatePuzzleOne();
+    });
+
+    function updatePuzzleOne() {
+      if (puzzleOneLeftNumber === 9 && puzzleOneMiddleNumber === 9 && puzzleOneRightNumber === 1) {
+        openTriangleKeyBox();
+        for (var i = 0; i < puzzleOnePlanes.length; i++) {
+          puzzleOnePlanes[i].setAttribute('color', 'green');
+        }
+        // In the second for loop i needs to stay at 0 because the array of HTML Elements
+        // changes after every removal, which means first it's 0-5, then 0-4, 0-3
+        // meaning if I use i++ it will remove only half of the array
+        for (var i = 0; i < puzzleOneTriangles.length; i) {
+          puzzleOneTriangles[i].remove();
+        }
+      }
+    }
 
     function openTriangleKeyBox() {
-      triangleKeyBoxLock.setAttribute("animation","property: opacity; to: 0.0; dur: 2000; easeing: linear; loop: false;");
+      for (var i = 0; i < triangleKeyBoxLock.length; i++) {
+        triangleKeyBoxLock[i].setAttribute("animation","property: opacity; to: 0.0; dur: 2000; easeing: linear; loop: false;");
+      }
       setTimeout(function () {
         doosjeBovenkant.setAttribute("animation","property: rotation; to: -30 0 0; dur: 2000; easing: linear; loop: false");
         setTimeout(function () {
