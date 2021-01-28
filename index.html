@@ -39,6 +39,10 @@
       <img id="poster" src="assets/poster.png">
       <img id="instructiePapiertje" src="assets/instructiePapier.jpg">
       <img id="painting1" src="assets/painting1.jpg">
+      <img id="painting2" src="assets/painting2.jpg">
+      <img id="painting3" src="assets/painting3.jpg">
+      <img id="walter" src="assets/walter.jpg">
+      <img id="anatomischeles" src="assets/anatomischeles.jpg">
       <a-asset-item id="pentagonkey-obj" src="blender/pentagonkey.obj"></a-asset-item>
       <a-asset-item id="pentagonkey-mtl" src="blender/pentagonkey.mtl"></a-asset-item>
       <a-asset-item id="console" src="blender/console.gltf"></a-asset-item>
@@ -289,12 +293,21 @@
 
 
     <!-- Paintings -->
-    <a-box color="brown" position="-8.95 3 5" height="0.75" depth="0.75" width="0.1">
-      <a-box color="orange" position="0 0 0" width="0.7" height="0.7" opacity="0" rotation="-90 0 0"></a-box>
+    <a-box color="#1A140A" position="-8.95 2.75 3.25" height="0.75" depth="0.75" width="0.1">
+      <a-plane src="#painting1" position="0.06 0 0" width="0.7" height="0.7" opacity="1" rotation="0 90 0"></a-plane>
     </a-box>
-    <a-box color="white" position="-8.95 3 -5" height="0.75" depth="0.75" width="0.1"></a-box>
-    <a-box color="white" position="8.95 3 5" height="0.75" depth="0.75" width="0.1"></a-box>
-    <a-box color="white" position="8.95 3 -5" height="0.75" depth="0.75" width="0.1"></a-box>
+    <a-box color="#1A140A" position="-8.95 2.75 -3.25" height="0.75" depth="0.75" width="0.1">
+      <a-plane src="#painting2" position="0.06 0 0" width="0.7" height="0.7" opacity="1" rotation="0 90 0"></a-plane>
+    </a-box>
+    <a-box color="#1A140A" position="8.95 3 5" height="0.75" depth="0.75" width="0.1">
+      <a-plane src="#painting3" position="-0.06 0 0" width="0.7" height="0.7" opacity="1" rotation="0 -90 0"></a-plane>
+    </a-box>
+    <a-box color="#1A140A" position="8.95 3 -5" height="0.75" depth="0.75" width="0.1">
+      <a-plane src="#walter" position="-0.06 0 0" width="0.7" height="0.7" opacity="1" rotation="0 -90 0"></a-plane>
+    </a-box>
+    <a-box color="#1A140A" position="2 2 9" height="3" depth="4" width="0.1" rotation="0 -90 0">
+      <a-plane src="#anatomischeles" position="-0.06 0 0" height="2.95" width="3.95" opacity="1" rotation="0 -90 0"></a-plane>
+    </a-box>
 
     <!-- <a-cone id="js--bekerCarry" color="green" position="1 1 -1" radius-bottom="0.01" radius-top="0.01" height="0.1" opacity="0.0" scale="0.7 0.7 0.7">
       <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
