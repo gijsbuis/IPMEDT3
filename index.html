@@ -38,6 +38,7 @@
       <img id="sky" src="assets/sky.png">
       <img id="poster" src="assets/poster.png">
       <img id="instructiePapiertje" src="assets/instructiePapier.jpg">
+      <img id="painting1" src="assets/painting1.jpg">
       <a-asset-item id="pentagonkey-obj" src="blender/pentagonkey.obj"></a-asset-item>
       <a-asset-item id="pentagonkey-mtl" src="blender/pentagonkey.mtl"></a-asset-item>
       <a-asset-item id="console" src="blender/console.gltf"></a-asset-item>
@@ -209,7 +210,7 @@
       <a-cylinder height="0.6" position="-0.5 1.1 3" radius="0.25" opacity="0.4" open-ended="false">
         <a-cylinder id="js--vloeistof" height="0.3" position="0 0 0" radius="0.22" opacity="0.5" color="yellow">
         </a-cylinder>
-        <a-entity id="js--cubeSleutel" class="js--interact js--pickup" rotation="0 90 20" position="0 1 0" gltf-model="#brassKey" scale="0.04 0.04 0.04"></a-entity>
+        <a-entity id="js--cubeSleutel" class="js--interact js--pickup" rotation="0 90 20" position="0 0 0" gltf-model="#brassKey" scale="0.04 0.04 0.04"></a-entity>
 
       </a-cylinder>
       <!-- Roze beker-->
@@ -288,7 +289,9 @@
 
 
     <!-- Paintings -->
-    <a-box color="white" position="-8.95 3 5" height="0.75" depth="0.75" width="0.1"></a-box>
+    <a-box color="white" position="-8.95 3 5" height="0.75" depth="0.75" width="0.1">
+      <a-plane src="#painting1" position="0 0 1" width="0.7" height="0.7" opacity="0" rotation="0 0 0"></a-plane>
+    </a-box>
     <a-box color="white" position="-8.95 3 -5" height="0.75" depth="0.75" width="0.1"></a-box>
     <a-box color="white" position="8.95 3 5" height="0.75" depth="0.75" width="0.1"></a-box>
     <a-box color="white" position="8.95 3 -5" height="0.75" depth="0.75" width="0.1"></a-box>
