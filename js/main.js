@@ -77,19 +77,50 @@ window.onload = () => {
       begin[i].addEventListener("click", function(evt){
         textVanish[0].remove();
         playVideo();
+        fbiAPI();
         setTimeout(function(){
           door[0].setAttribute("animation","property: rotation; to: 0 -90 0; dur: 1500; easing: linear; loop: false");
           for (let i = 0; i < places.length; i++) {
             places[i].classList.add("js--interact");
             places[i].setAttribute("animation","property: opacity; to: 1; dur: 1500; easing: linear; loop: false");
           }
-        }, 70000);
+        }, 69000);
       });
     }
 
     function playVideo(){
       video.play();
     }
+
+  // Add police API
+  let fbiData = '';
+  let fbiArray = Array();
+  let fbiArray1 = Array();
+  let fbiAPItext = document.getElementsByClassName("js--fbiAPI")
+
+  function fbiAPI(){
+    fetch('https://api.usa.gov/crime/fbi/sapi/api/agencies?api_key=Dnn8qGENVdX7A3c4afcufzGVR7kHGG2DsCOMma60')
+    .then(response => response.json())
+    .then(data => showData(data));
+  }
+
+  function showData(data) {
+    for (var i in data) {
+      fbiData += i;
+      for (var j in data[i]) {
+        fbiData += '<p>' + data[i][j].agency_name + '<p>';
+        fbiArray.push(data[i][j].agency_name);
+      }
+    }
+    setTimeout(function(){
+      fbiAPItext[0].setAttribute("value",fbiArray[Math.floor(Math.random() * fbiArray.length)]);
+    }, 35000);
+    setTimeout(function(){
+      fbiAPItext[0].setAttribute("value","");
+    }, 40000);
+  }
+
+  // Dnn8qGENVdX7A3c4afcufzGVR7kHGG2DsCOMma60
 
   // Choose element //
     const elements = document.getElementsByClassName("js--element");
