@@ -94,7 +94,6 @@ window.onload = () => {
 
   // Choose element //
     const elements = document.getElementsByClassName("js--element");
-
     const element1Pos = "-0.5 0.35 0.2";
     const element2Pos = "0 0.35 0";
     const element3Pos = "0.5 0.35 0.12";
