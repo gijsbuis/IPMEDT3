@@ -48,7 +48,7 @@ window.onload = () => {
   let tracker = 0;
   let cheeringAudio = new Audio('assets/cheering.mp3');
   let errorAudio = new Audio('assets/error.mp3');
-  let bombAudio = new Audio('assets/bombSound.mp3')
+  let bombAudio = new Audio('assets/bombSound.mp3');
   cheeringAudio.volume = 0.2;
   errorAudio.volume = 0.2;
   bombAudio.volume = 0.2;
@@ -67,6 +67,7 @@ window.onload = () => {
 
   // Play video //
     const video = document.getElementById("video");
+    video.volume = 0.1;
     const begin = document.getElementsByClassName("js--begin");
     let door = document.getElementsByClassName("js--door");
     let textVanish = document.getElementsByClassName("js--textVanish");
@@ -81,7 +82,7 @@ window.onload = () => {
             places[i].classList.add("js--interact");
             places[i].setAttribute("animation","property: opacity; to: 1; dur: 1500; easing: linear; loop: false");
           }
-        }, 3000);
+        }, 70000);
       });
     }
 
