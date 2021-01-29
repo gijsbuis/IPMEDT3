@@ -15,9 +15,9 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "Cube.003",
+            "name" : "Cube.004",
             "translation" : [
-                0,
+                -0.050429344177246094,
                 1.0267308950424194,
                 0
             ]
@@ -50,11 +50,11 @@
                 0,
                 0
             ],
-            "name" : "Material.007",
+            "name" : "Material",
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
-                    0.0017660873709246516,
-                    1,
+                    0.004435598850250244,
+                    0.11319854110479355,
                     0,
                     1
                 ],
@@ -65,7 +65,7 @@
     ],
     "meshes" : [
         {
-            "name" : "Cube.004",
+            "name" : "Cube.003",
             "primitives" : [
                 {
                     "attributes" : {
