@@ -54,6 +54,7 @@ window.onload = () => {
   bombAudio.volume = 0.2;
   let finalTriangleKey = document.createElement('a-entity');
 
+// Movement //
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
       let att = document.createAttribute('animation');
