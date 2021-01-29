@@ -44,6 +44,7 @@ window.onload = () => {
   let papier = document.getElementById('js--papier');
   let tracker = 0;
   let cheeringAudio = new Audio('assets/cheering.mp3');
+  let errorAudio = new Audio('assets/error.mp3');
 
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
@@ -351,9 +352,9 @@ window.onload = () => {
         setTimeout(function(){vloeistof.setAttribute("animation", "property: height; to: 0.5; loop: false; dur: 1000")},3000);
         cubeSleutel.classList.add("js--interact");
         console.log("cheers");
+        cheeringAudio.play();
       } else {
-        console.log("bot");
-
+        errorAudio.play();
     }
 
     triConsole.addEventListener('click', function(event) {
