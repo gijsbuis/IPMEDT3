@@ -355,6 +355,7 @@ window.onload = () => {
         cheeringAudio.play();
       } else {
         errorAudio.play();
+      }
     }
 
     triConsole.addEventListener('click', function(event) {
@@ -487,5 +488,4 @@ window.onload = () => {
         }, 2000);
       }, 2000);
     }
-}
 }
