@@ -104,9 +104,12 @@
     <!-- Start kamer -->
     <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="-2.9 0 9" opacity="0"></a-cylinder>
     <a-cylinder class="js--place" color="grey" radius="0.5" height="0.1" position="0 0 16" opacity="0"></a-cylinder>
-    <a-entity id="js--triConsole" class="js--interact" gltf-model="#triConsole" scale="0.12 0.12 0.12" position="-1.3 0 0" rotation="0 180 0"></a-entity>
-    <a-entity id="js--cubeConsole" class="js--interact" gltf-model="#cubeConsole" position="1.3 0 0" scale="0.12 0.12 0.12" rotation="0 0 0"></a-entity>
-    <a-entity id="js--pentaConsole" class="js--interact" gltf-model="#pentaConsole" position="0.4 0 -1.3" scale="0.12 0.12 0.12" rotation="0 90 0"></a-entity>
+    <a-entity id="js--triConsole" class="js--interact" gltf-model="#triConsole" scale="0.12 0.12 0.12"
+      position="-1.3 0 0" rotation="0 180 0"></a-entity>
+    <a-entity id="js--cubeConsole" class="js--interact" gltf-model="#cubeConsole" position="1.3 0 0"
+      scale="0.12 0.12 0.12" rotation="0 0 0"></a-entity>
+    <a-entity id="js--pentaConsole" class="js--interact" gltf-model="#pentaConsole" position="0.4 0 -1.3"
+      scale="0.12 0.12 0.12" rotation="0 90 0"></a-entity>
 
     <!-- sky -->
     <a-sky material="src: #sky"></a-sky>
@@ -190,9 +193,10 @@
 
     <!-- Starting room -->
     <a-entity position="0 1 14">
-      <a-entity gltf-model="#plant" position="-4 -0.5 1" scale="0.3 0.3 0.3"></a-entity>
+      <a-entity gltf-model="#plant" position="-4 -1 1" scale="1.1 1.1 1.1"></a-entity>
       <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="5 1 0" rotation="0 -90 0"></a-plane>
-      <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="-5 1 0" rotation="0 90 0" opacity="0">
+      <a-plane material="src: #wall" repeat="10 3" height="5" width="10" position="-5 1 0" rotation="0 90 0"
+        opacity="0">
         <a-entity>
           <a-plane material="src: #wall" position="0 1.75 0" repeat="10 1" height="1.5" width="10"></a-plane>
           <a-plane material="src: #wall" position="0 -1.25 0" repeat="10 1" height="1.5" width="10"></a-plane>
@@ -432,7 +436,7 @@
 
     <!-- Kast -->
     <a-sphere position="-3.3 0 -9.6" radius="0.5" rotation="0 15">
-      <a-entity gltf-model="#plant" position="-5 0.1 1" scale="0.3 0.3 0.3"></a-entity>
+      <a-entity gltf-model="#plant" position="-5 0 1" scale="1.2 1.2 1.2"></a-entity>
       <a-entity gltf-model="#reageerbuizen" position="0 0.1 2" scale="0.03 0.03 0.03"></a-entity>
       <a-box material="src: #steel" height="5" width="0.05" depth="0.5" position="0.75 0 2"></a-box>
       <a-box material="src: #steel" height="5" width="0.05" depth="0.5" position="-0.75 0 2"></a-box>
@@ -706,9 +710,12 @@
     <a-entity position="-7.5 1.5 3.5" rotation="0 135 0" opacity="0">
       <a-box class="js--puzzleOneHint" color="grey" width="2.6" height="1.1" depth="0.1" opacity="0" rotation="-10 0 0">
       </a-box>
-      <a-plane class="js--puzzleOneHint" src="#instructiePapiertje" position="0 0 0.075" width="2.5" height="1" opacity="0" rotation="-10 0 0"></a-plane>
-      <a-box class="js--puzzleOneHint" color="#303030" height="1.5" depth="0.2" width="0.2" position="-1 -1 0" opacity="0"></a-box>
-      <a-box class="js--puzzleOneHint" color="#303030" height="1.5" depth="0.2" width="0.2" position="1 -1 0" opacity="0"></a-box>
+      <a-plane class="js--puzzleOneHint" src="#instructiePapiertje" position="0 0 0.075" width="2.5" height="1"
+        opacity="0" rotation="-10 0 0"></a-plane>
+      <a-box class="js--puzzleOneHint" color="#303030" height="1.5" depth="0.2" width="0.2" position="-1 -1 0"
+        opacity="0"></a-box>
+      <a-box class="js--puzzleOneHint" color="#303030" height="1.5" depth="0.2" width="0.2" position="1 -1 0"
+        opacity="0"></a-box>
     </a-entity>
 
     <a-entity class="js--interact js--pickup" position="-0.1 -0.05 -0.4"
