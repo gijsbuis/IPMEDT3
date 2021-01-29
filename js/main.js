@@ -22,6 +22,7 @@ window.onload = () => {
   const pentaConsole = document.getElementById('js--pentaConsole');
   const bars = document.getElementById('js--bars');
   const eindBeker = document.getElementById('js--eindBeker');
+  const slingers = document.getElementById("js--Slingers");
 
   let puzzleOneLeftNumber = 0;
   let puzzleOneMiddleNumber = 0;
@@ -399,6 +400,8 @@ window.onload = () => {
         console.log("GEHAALD, BOM ONTMANTELD!");
         cheeringAudio.play();
         bars.setAttribute('animation','property: position; to: 0 10 1; dur: 2000; easing: linear; loop: false;');
+        slingers.setAttribute('animation','property: position; to: -3 2.8 2; dur: 2000; easing: linear; loop: false;');
+
       }
     }
 
