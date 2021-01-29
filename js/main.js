@@ -21,6 +21,7 @@ window.onload = () => {
   const cubeConsole = document.getElementById('js--cubeConsole');
   const pentaConsole = document.getElementById('js--pentaConsole');
   const bars = document.getElementById('js--bars');
+  const eindBeker = document.getElementById('js--eindBeker');
 
   let puzzleOneLeftNumber = 0;
   let puzzleOneMiddleNumber = 0;
@@ -164,11 +165,11 @@ window.onload = () => {
 
     for (let i = 0; i < beker.length; i++) {
       beker[i].addEventListener("click", function(evt){
-        if(puzzleComplete == true){
-          beker[i].setAttribute("position","0 5 0");
-          // console.log(bekerCarry);
-          // camera.innerHTML += bekerCarry;
-          // console.log(camera);
+        if(puzzleComplete == true) {
+          console.log(eindBeker);
+          camera.innerHTML += '<a-cone class="js--beker js--interact" color="green" position="0.8 -0.6 -1" radius-bottom="0.20" radius-top="0.06" height="0.6" opacity="0.0"><a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone><a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"open-ended="true" opacity="0.5"></a-cone><a-torus position="0 0.26 0" rotation="90" radius="0.05" radius-tubular="0.005" opacity="0.5"></a-torus><a-torus position="0 -0.275 0" rotation="90" radius="0.1470" radius-tubular="0.02" opacity="0.5"></a-torus><a-torus class="js--fill" position="0 -0.275 0" color="#d59f6a" rotation="90" radius="0.1335" radius-tubular="0.02" opacity="1"></a-torus><a-cone class="js--fill" position="0 -0.23 0" color="#d59f6a" height="0.05" radius-bottom="0.17" radius-top="0.155" open-ended="false" opacity="1"></a-cone><a-cone class="js--fill" position="0 -0.18 0" color="#d59f6a" height="0.08" radius-bottom="0.16" radius-top="0.135" open-ended="false" opacity="1"></a-cone><a-cone class="js--fill" position="0 -0.10 0" color="#d59f6a" height="0.08" radius-bottom="0.135" radius-top="0.11" open-ended="false" opacity="1"></a-cone></a-cone>';
+          hold = "eindBeker";
+          this.remove();
           bekerBoolean = true;
         } else{
           console.log("neej");
@@ -183,6 +184,8 @@ window.onload = () => {
     for (let i = 0; i < slot.length; i++) {
       slot[i].addEventListener("click", function(evt){
         if(bekerBoolean == true){
+          camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
+          hold = null;
           bekerSlot[0].setAttribute("position","0 1.65 2.54");
           bekerSlot[0].setAttribute("rotation","0 -145 90");
           bekerSlot[0].setAttribute("animation","property: rotation; to: 0 -145 125; dur: 1500; easing: linear; loop: false");
