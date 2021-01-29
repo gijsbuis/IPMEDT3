@@ -116,10 +116,10 @@ window.onload = () => {
     }
     setTimeout(function(){
       fbiAPItext[0].setAttribute("value",fbiArray[Math.floor(Math.random() * fbiArray.length)]);
-    }, 35000);
+    }, 34500);
     setTimeout(function(){
       fbiAPItext[0].setAttribute("value","");
-    }, 40000);
+    }, 39500);
   }
 
   // Dnn8qGENVdX7A3c4afcufzGVR7kHGG2DsCOMma60
