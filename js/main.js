@@ -53,6 +53,8 @@ window.onload = () => {
   errorAudio.volume = 0.2;
   bombAudio.volume = 0.2;
   let finalTriangleKey = document.createElement('a-entity');
+  let finalPentagonKey = document.createElement('a-entity');
+  let finalCubeKey = document.createElement('a-entity');
 
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
@@ -388,23 +390,31 @@ window.onload = () => {
         finalTriangleKey.setAttribute('position','-1.7 1.5 0');
         finalTriangleKey.setAttribute('rotation','60 90 0');
         finalTriangleKey.setAttribute('animation','property: position; to: -1.54 1.21 0; dur: 2000; easing: linear; loop: false');
+        scene.appendChild(finalTriangleKey);
         setTimeout(function () {
           triConsole.setAttribute("gltf-model","blender/gTriConsole.gltf");
         }, 3000);
-        scene.appendChild(finalTriangleKey);
         puzzleCompletionCheck();
       }
     });
     pentaConsole.addEventListener('click', function(event) {
       console.log("Click console");
-      if (hold === 'pentagonKey') {
+      // if (hold === 'pentagonKey') {
         camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
         console.log("PUZZLE TWO COMPLETE");
         puzzleTwoComplete = true;
         hold = null;
-        pentaConsole.setAttribute("gltf-model","blender/gPentaConsole.gltf");
+        finalPentagonKey.setAttribute('gltf-model','#pentagonKey');
+        finalPentagonKey.setAttribute('scale', '0.08 0.08 0.08');
+        finalPentagonKey.setAttribute('position','-1.7 1.5 0');
+        finalPentagonKey.setAttribute('rotation','60 90 0');
+        finalPentagonKey.setAttribute('animation','property: position; to: -1.54 1.21 0; dur: 2000; easing: linear; loop: false');
+        scene.appendChild(finalPentagonKey);
+        setTimeout(function () {
+          pentaConsole.setAttribute("gltf-model","blender/gPentaConsole.gltf");
+        }, 3000);
         puzzleCompletionCheck();
-      }
+      // }
     });
     cubeConsole.addEventListener('click', function(event) {
       console.log("Click console");
