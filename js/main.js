@@ -397,21 +397,25 @@ window.onload = () => {
     });
     pentaConsole.addEventListener('click', function(event) {
       console.log("Click console");
-      camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
-      console.log("PUZZLE TWO COMPLETE");
-      puzzleTwoComplete = true;
-      hold = null;
-      pentaConsole.setAttribute("gltf-model","blender/gPentaConsole.gltf");
-      puzzleCompletionCheck();
+      if (hold === 'pentagonKey') {
+        camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
+        console.log("PUZZLE TWO COMPLETE");
+        puzzleTwoComplete = true;
+        hold = null;
+        pentaConsole.setAttribute("gltf-model","blender/gPentaConsole.gltf");
+        puzzleCompletionCheck();
+      }
     });
     cubeConsole.addEventListener('click', function(event) {
       console.log("Click console");
-      camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
-      console.log("PUZZLE THREE COMPLETE");
-      puzzleThreeComplete = true;
-      hold = null;
-      cubeConsole.setAttribute("gltf-model","blender/gCubeConsole.gltf");
-      puzzleCompletionCheck();
+      if (hold === 'cubeKey') {
+        camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
+        console.log("PUZZLE THREE COMPLETE");
+        puzzleThreeComplete = true;
+        hold = null;
+        cubeConsole.setAttribute("gltf-model","blender/gCubeConsole.gltf");
+        puzzleCompletionCheck();
+      }
     });
 
     function puzzleCompletionCheck() {
