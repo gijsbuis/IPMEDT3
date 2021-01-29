@@ -22,6 +22,7 @@ window.onload = () => {
   const pentaConsole = document.getElementById('js--pentaConsole');
   const bars = document.getElementById('js--bars');
   const eindBeker = document.getElementById('js--eindBeker');
+  const plant = document.getElementById('js--plant');
 
   let puzzleOneLeftNumber = 0;
   let puzzleOneMiddleNumber = 0;
@@ -361,12 +362,15 @@ window.onload = () => {
       }
     }
 
+    plant.addEventListener('click', function(event) {
+      puzzleOneHintAppear();
+      puzzleOneGotHint = true;
+      plant.classList.remove('js--interact');
+    })
+
     triConsole.addEventListener('click', function(event) {
       console.log("Click console");
-      if (puzzleOneGotHint == false) {
-        puzzleOneHintAppear();
-        puzzleOneGotHint = true;
-      } else if (hold === 'triangleKey') {
+      if (hold === 'triangleKey') {
         camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
         console.log("PUZZLE ONE COMPLETE");
         puzzleOneComplete = true;
