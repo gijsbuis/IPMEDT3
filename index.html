@@ -453,9 +453,7 @@
       <a-box material="src: #steel" height="0.05" width="1.45" depth="0.5" position="0 1.8555 2"></a-box>
       <a-box material="src: #steel" height="0.05" width="1.45" depth="0.5" position="0 2.475 2"></a-box>
       <!-- Key -->
-      <a-entity id="js--pentagonKey" class="js--interact js--pickup" rotation="0 70 0" position="0.15 1.32 1.95"
-        scale="0.1 0.1 0.1" gltf-model="#pentagonkey">
-      </a-entity>
+      <a-entity id="js--pentagonKey" class="js--interact js--pickup" rotation="0 70 0" position="0.15 1.32 1.95" scale="0.1 0.1 0.1" gltf-model="#pentagonkey"></a-entity>
       <!-- Key Lock -->
       <a-box class="js--slot js--interact" color="red" position="0 1.2 2.34" rotation="-10 0 0" height="0.01"
         width="0.01" depth="0.01" opacity="0.0">
@@ -536,23 +534,16 @@
         <a-box material="src: #wood2" height="1" width="0.15" depth="0.15" position="-1.424 -0.5 -0.624"></a-box>
         <a-box material="src: #wood2" height="1" width="0.15" depth="0.15" position="-1.424 -0.5 0.624"></a-box>
         <!-- Beker -->
-        <a-cone class="js--beker js--interact" color="green" position="-1.1 0.35 0.32" radius-bottom="0.20"
-          radius-top="0.06" height="0.6" opacity="0.0">
-          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05"
-            open-ended="true" opacity="0.5"></a-cone>
-          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"
-            open-ended="true" opacity="0.5"></a-cone>
+        <a-cone class="js--beker js--interact" color="green" position="-1.1 0.35 0.32" radius-bottom="0.20" radius-top="0.06" height="0.6" opacity="0.0">
+          <a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone>
+          <a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"open-ended="true" opacity="0.5"></a-cone>
           <a-torus position="0 0.26 0" rotation="90" radius="0.05" radius-tubular="0.005" opacity="0.5"></a-torus>
           <a-torus position="0 -0.275 0" rotation="90" radius="0.1470" radius-tubular="0.02" opacity="0.5"></a-torus>
 
-          <a-torus class="js--fill" position="0 -0.275 0" color="black" rotation="90" radius="0.1335"
-            radius-tubular="0.02" opacity="0"></a-torus>
-          <a-cone class="js--fill" position="0 -0.23 0" color="black" height="0.05" radius-bottom="0.17"
-            radius-top="0.155" open-ended="false" opacity="0"></a-cone>
-          <a-cone class="js--fill" position="0 -0.18 0" color="black" height="0.08" radius-bottom="0.16"
-            radius-top="0.135" open-ended="false" opacity="0"></a-cone>
-          <a-cone class="js--fill" position="0 -0.10 0" color="black" height="0.08" radius-bottom="0.135"
-            radius-top="0.11" open-ended="false" opacity="0"></a-cone>
+          <a-torus class="js--fill" position="0 -0.275 0" color="black" rotation="90" radius="0.1335" radius-tubular="0.02" opacity="0"></a-torus>
+          <a-cone class="js--fill" position="0 -0.23 0" color="black" height="0.05" radius-bottom="0.17" radius-top="0.155" open-ended="false" opacity="0"></a-cone>
+          <a-cone class="js--fill" position="0 -0.18 0" color="black" height="0.08" radius-bottom="0.16" radius-top="0.135" open-ended="false" opacity="0"></a-cone>
+          <a-cone class="js--fill" position="0 -0.10 0" color="black" height="0.08" radius-bottom="0.135" radius-top="0.11" open-ended="false" opacity="0"></a-cone>
         </a-cone>
         <!-- Element 1 -->
         <a-cone class="js--interact js--element" color="green" position="-0.5 0.35 0.2" radius-bottom="0.20"
@@ -677,32 +668,29 @@
 
     <a-entity class="puzzleOne" position="-8.99 2.5 1" rotation="0 90 0">
       <a-entity class="puzzleOne--leftNumber">
-        <a-triangle id="js--puzzleOneLeftNumberUp" class="js--puzzleOneTriangle js--interact" color="grey"
+        <a-triangle id="js--puzzleOneLeftNumberUp" class="js--puzzleOneTriangle js--interact" color="#303030"
           scale="0.5 0.5 0.5" position="0 0.8 0"></a-triangle>
         <a-plane class="js--puzzleOnePlane" color="white" position="0 0 0" width="0.75" align="center">
           <a-text id="js--puzzle1--valueOne" value="0" color="black" align="center" width="10"></a-text>
         </a-plane>
-        <a-triangle id="js--puzzleOneLeftNumberDown" class="js--puzzleOneTriangle js--interact" color="grey"
+        <a-triangle id="js--puzzleOneLeftNumberDown" class="js--puzzleOneTriangle js--interact" color="#303030"
           scale="0.5 0.5 0.5" rotation="0 0 180" position="0 -0.8 0"></a-triangle>
       </a-entity>
       <a-text class="comma" value="," color="black" align="center" width="10" position="0.4 0 0"></a-text>
       <a-entity class="puzzleOne--middleNumber" position="0.75 0 0">
-        <a-triangle id="js--puzzleOneMiddleNumberUp" class="js--puzzleOneTriangle js--interact" color="grey"
+        <a-triangle id="js--puzzleOneMiddleNumberUp" class="js--puzzleOneTriangle js--interact" color="#303030"
           scale="0.5 0.5 0.5" position="0 0.8 0"></a-triangle>
         <a-plane class="js--puzzleOnePlane" color="white" position="0 0 0" width="0.75" align="center">
           <a-text id="js--puzzle1--valueTwo" value="0" color="black" align="center" width="10"></a-text>
         </a-plane>
-        <a-triangle id="js--puzzleOneMiddleNumberDown" class="js--puzzleOneTriangle js--puzzleOneTriangle js--interact"
-          color="grey" scale="0.5 0.5 0.5" rotation="0 0 180" position="0 -0.8 0"></a-triangle>
+        <a-triangle id="js--puzzleOneMiddleNumberDown" class="js--puzzleOneTriangle js--puzzleOneTriangle js--interact" color="#303030" scale="0.5 0.5 0.5" rotation="0 0 180" position="0 -0.8 0"></a-triangle>
       </a-entity>
       <a-entity class="puzzleOne--rightNumber" position="1.5 0 0">
-        <a-triangle id="js--puzzleOneRightNumberUp" class="js--puzzleOneTriangle js--interact" color="grey"
-          scale="0.5 0.5 0.5" position="0 0.8 0"></a-triangle>
+        <a-triangle id="js--puzzleOneRightNumberUp" class="js--puzzleOneTriangle js--interact" color="#303030" scale="0.5 0.5 0.5" position="0 0.8 0"></a-triangle>
         <a-plane class="js--puzzleOnePlane" color="white" position="0 0 0" width="0.75" align="center">
           <a-text id="js--puzzle1--valueThree" value="0" color="black" align="center" width="10"></a-text>
         </a-plane>
-        <a-triangle id="js--puzzleOneRightNumberDown" class="js--puzzleOneTriangle js--interact" color="grey"
-          scale="0.5 0.5 0.5" rotation="0 0 180" position="0 -0.8 0"></a-triangle>
+        <a-triangle id="js--puzzleOneRightNumberDown" class="js--puzzleOneTriangle js--interact" color="#303030" scale="0.5 0.5 0.5" rotation="0 0 180" position="0 -0.8 0"></a-triangle>
       </a-entity>
       <a-entity class="puzzleOne--E27" position="2.25 0 0">
         <a-plane class="js--puzzleOnePlane" color="white" position="0 0 0" width="1" align="center">
