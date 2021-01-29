@@ -364,8 +364,9 @@ window.onload = () => {
   antwoordText.setAttribute("value", "Je bent op zoek naar een vloeistof met een 'Rf' waarde van " + ditAntwoord)
 
   function gameLogica(){
-    let Rf = tracker / 6;
-    huidigAntwoord = ditAntwoord.toFixed(2);
+    let Rf = parseFloat(tracker / 6).toFixed(1);
+    console.log(Rf);
+    huidigAntwoord = parseFloat(ditAntwoord).toFixed(1);
     console.log(huidigAntwoord);
     if(Rf == huidigAntwoord){
       let vloeistof = document.getElementById("js--vloeistof");
