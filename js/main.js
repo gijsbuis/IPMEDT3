@@ -368,6 +368,7 @@ window.onload = () => {
         console.log("PUZZLE ONE COMPLETE");
         puzzleOneComplete = true;
         hold = null;
+        triConsole.setAttribute("gltf-model","blender/gTriConsole.gltf");
         puzzleCompletionCheck();
       }
     });
@@ -377,6 +378,7 @@ window.onload = () => {
       console.log("PUZZLE TWO COMPLETE");
       puzzleTwoComplete = true;
       hold = null;
+      pentaConsole.setAttribute("gltf-model","blender/gPentaConsole.gltf");
       puzzleCompletionCheck();
     });
     cubeConsole.addEventListener('click', function(event) {
@@ -385,6 +387,7 @@ window.onload = () => {
       console.log("PUZZLE THREE COMPLETE");
       puzzleThreeComplete = true;
       hold = null;
+      cubeConsole.setAttribute("gltf-model","blender/gCubeConsole.gltf");
       puzzleCompletionCheck();
     });
 
