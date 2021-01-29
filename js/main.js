@@ -41,7 +41,7 @@ window.onload = () => {
   const slot = document.getElementsByClassName("js--slot");
   const bekerSlot = document.getElementsByClassName("js--bekerSlot");
 
-  let RfWaardes = ["1.5","1","3","0.75","6"];
+  let RfWaardes = ["0.16","0.33","0.66","1","1.33"];
   let randomNum = Math.floor(Math.random() * Math.floor(5));
   let ditAntwoord = RfWaardes[randomNum];
   let button = document.getElementById("js--button");
@@ -86,6 +86,7 @@ window.onload = () => {
   let textVanish = document.getElementsByClassName("js--textVanish");
   let countCorrect = 0;
   let totalTries = 0;
+  let huidigAntwoord = 0;
 
   // Movement //
   for (let i = 0; i < places.length; i++) {
@@ -363,8 +364,10 @@ window.onload = () => {
   antwoordText.setAttribute("value", "Je bent op zoek naar een vloeistof met een 'Rf' waarde van " + ditAntwoord)
 
   function gameLogica(){
-    let Rf = 6 / tracker;
-    if(Rf == ditAntwoord){
+    let Rf = tracker / 6;
+    huidigAntwoord = ditAntwoord.toFixed(2); 
+    console.log(huidigAntwoord);
+    if(Rf == huidigAntwoord){
       let vloeistof = document.getElementById("js--vloeistof");
       let cubeSleutel = document.getElementById("js--cubeSleutel");
       if(tracker == 1){
