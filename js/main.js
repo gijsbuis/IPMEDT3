@@ -365,7 +365,7 @@ window.onload = () => {
 
   function gameLogica(){
     let Rf = tracker / 6;
-    huidigAntwoord = ditAntwoord.toFixed(2); 
+    huidigAntwoord = ditAntwoord.toFixed(2);
     console.log(huidigAntwoord);
     if(Rf == huidigAntwoord){
       let vloeistof = document.getElementById("js--vloeistof");
