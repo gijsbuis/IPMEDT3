@@ -55,28 +55,28 @@
       <a-asset-item id="pentagonkey-obj" src="blender/pentagonkey.obj"></a-asset-item>
       <a-asset-item id="pentagonkey-mtl" src="blender/pentagonkey.mtl"></a-asset-item>
       <a-asset-item id="pentagonkey" src="blender/pentagonkey.gltf">
-        <a-asset-item id="reageerbuizen" src="blender/reageerbuizen.gltf"></a-asset-item>
+      <a-asset-item id="reageerbuizen" src="blender/reageerbuizen.gltf"></a-asset-item>
 
-        <a-asset-item id="bomb" src="blender/bomb.gltf"></a-asset-item>
-        <a-asset-item id="brassKey" src="blender/brasskey.gltf"></a-asset-item>
-        <a-asset-item id="bars" src="blender/bars.gltf"></a-asset-item>
-        <a-asset-item id="officeChair" src="blender/officeChair.gltf"></a-asset-item>
-        <video id="video" src="mp4/video.webm"></video>
-        <a-asset-item id="bomb" src="blender/bomb.gltf"></a-asset-item>
-        <a-asset-item id="brassKey" src="blender/brasskey.gltf"></a-asset-item>
-        <a-asset-item id="bars" src="blender/bars.gltf"></a-asset-item>
-        <a-asset-item id="rTriConsole" src="blender/rTriConsole.gltf"></a-asset-item>
-        <a-asset-item id="rPentaConsole" src="blender/rPentaConsole.gltf"></a-asset-item>
-        <a-asset-item id="rCubeConsole" src="blender/rCubeConsole.gltf"></a-asset-item>
-        <a-asset-item id="gTriConsole" src="blender/gTriConsole.gltf"></a-asset-item>
-        <a-asset-item id="gPentaConsole" src="blender/gPentaConsole.gltf"></a-asset-item>
-        <a-asset-item id="gCubeConsole" src="blender/gCubeConsole.gltf"></a-asset-item>
-        <a-asset-item id="plant" src="blender/plant.gltf"></a-asset-item>
-        <a-asset-item id="slingers" src="blender/slingers.gltf"></a-asset-item>
+      <a-asset-item id="bomb" src="blender/bomb.gltf"></a-asset-item>
+      <a-asset-item id="brassKey" src="blender/brasskey.gltf"></a-asset-item>
+      <a-asset-item id="bars" src="blender/bars.gltf"></a-asset-item>
+      <a-asset-item id="officeChair" src="blender/officeChair.gltf"></a-asset-item>
+      <video id="video" src="mp4/video.webm"></video>
+      <a-asset-item id="bomb" src="blender/bomb.gltf"></a-asset-item>
+      <a-asset-item id="brassKey" src="blender/brasskey.gltf"></a-asset-item>
+      <a-asset-item id="bars" src="blender/bars.gltf"></a-asset-item>
+      <a-asset-item id="rTriConsole" src="blender/rTriConsole.gltf"></a-asset-item>
+      <a-asset-item id="rPentaConsole" src="blender/rPentaConsole.gltf"></a-asset-item>
+      <a-asset-item id="rCubeConsole" src="blender/rCubeConsole.gltf"></a-asset-item>
+      <a-asset-item id="gTriConsole" src="blender/gTriConsole.gltf"></a-asset-item>
+      <a-asset-item id="gPentaConsole" src="blender/gPentaConsole.gltf"></a-asset-item>
+      <a-asset-item id="gCubeConsole" src="blender/gCubeConsole.gltf"></a-asset-item>
+      <a-asset-item id="plant" src="blender/plant.gltf"></a-asset-item>
+      <a-asset-item id="slingers" src="blender/slingers.gltf"></a-asset-item>
     </a-assets>
 
     <!-- <a-camera id="js--camera" position="0 1.6 7"> -->
-    <a-camera id="js--camera" position="0 1.6 -5">
+    <a-camera id="js--camera" position="-1 1.6 3">
       <a-entity
         animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
         animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -663,21 +663,18 @@
         <a-entity position="0 0.02 0.03" rotation="-10 0 0">
           <a-box class="js--triangleKeyBoxLock" material="src: #gold" position="0 0 0" scale="0.1 0.1 0.05" opacity="1">
           </a-box>
-          <a-torus class="js--triangleKeyBoxLock" material="src: #iron" position="0 0.055 0" radius="0.03"
-            radius-tubular="0.0054" opacity="1"></a-torus>
+          <a-torus class="js--triangleKeyBoxLock" material="src: #iron" position="0 0.055 0" radius="0.03" radius-tubular="0.0054" opacity="1"></a-torus>
         </a-entity>
 
         <!-- Sleutel -->
-        <a-entity id="js--triangleKey" class="js--interact js--pickup" position="-0.1 -0.05 -0.4"
-          gltf-model="#triangleKey" scale="0.08 0.08 0.08" rotation="0 45 0"></a-entity>
+        <a-entity id="js--triangleKey" class="js--interact js--pickup" position="-0.1 -0.05 -0.4" gltf-model="#triangleKey" scale="0.08 0.08 0.08" rotation="0 45 0"></a-entity>
 
       </a-plane>
     </a-box>
 
     <a-entity class="puzzleOne" position="-8.99 2.5 1" rotation="0 90 0">
       <a-entity class="puzzleOne--leftNumber">
-        <a-triangle id="js--puzzleOneLeftNumberUp" class="js--puzzleOneTriangle js--interact" color="#303030"
-          scale="0.5 0.5 0.5" position="0 0.8 0"></a-triangle>
+        <a-triangle id="js--puzzleOneLeftNumberUp" class="js--puzzleOneTriangle js--interact" color="#303030" scale="0.5 0.5 0.5" position="0 0.8 0"></a-triangle>
         <a-plane class="js--puzzleOnePlane" color="white" position="0 0 0" width="0.75" align="center">
           <a-text id="js--puzzle1--valueOne" value="0" color="black" position="0 0 0.05" align="center" width="10"></a-text>
         </a-plane>

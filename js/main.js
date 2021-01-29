@@ -48,6 +48,7 @@ window.onload = () => {
   let tracker = 0;
   let cheeringAudio = new Audio('assets/cheering.mp3');
   let errorAudio = new Audio('assets/error.mp3');
+  let finalTriangleKey = document.createElement('a-entity');
 
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
@@ -376,6 +377,12 @@ window.onload = () => {
         console.log("PUZZLE ONE COMPLETE");
         puzzleOneComplete = true;
         hold = null;
+        finalTriangleKey.setAttribute('gltf-model','#triangleKey');
+        finalTriangleKey.setAttribute('scale', '0.08 0.08 0.08');
+        finalTriangleKey.setAttribute('position','-1.7 1.5 0');
+        finalTriangleKey.setAttribute('rotation','60 90 0');
+        finalTriangleKey.setAttribute('animation','property: position; to: -1.54 1.21 0; dur: 2000; easing: linear; loop: false')
+        scene.appendChild(finalTriangleKey);
         triConsole.setAttribute("gltf-model","blender/gTriConsole.gltf");
         puzzleCompletionCheck();
       }
