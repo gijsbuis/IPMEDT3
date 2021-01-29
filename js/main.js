@@ -22,6 +22,8 @@ window.onload = () => {
   const pentaConsole = document.getElementById('js--pentaConsole');
   const bars = document.getElementById('js--bars');
   const eindBeker = document.getElementById('js--eindBeker');
+  const plant = document.getElementById('js--plant');
+  const slingers = document.getElementById("js--Slingers");
 
   let puzzleOneLeftNumber = 0;
   let puzzleOneMiddleNumber = 0;
@@ -46,6 +48,11 @@ window.onload = () => {
   let tracker = 0;
   let cheeringAudio = new Audio('assets/cheering.mp3');
   let errorAudio = new Audio('assets/error.mp3');
+  let bombAudio = new Audio('assets/bombSound.mp3')
+  cheeringAudio.volume = 0.2;
+  errorAudio.volume = 0.2;
+  bombAudio.volume = 0.2;
+  let finalTriangleKey = document.createElement('a-entity');
 
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
@@ -166,6 +173,7 @@ window.onload = () => {
     for (let i = 0; i < beker.length; i++) {
       beker[i].addEventListener("click", function(evt){
         if(puzzleComplete == true) {
+          cheeringAudio.play();
           console.log(eindBeker);
           camera.innerHTML += '<a-cone class="js--beker js--interact" color="green" position="0.8 -0.6 -1" radius-bottom="0.20" radius-top="0.06" height="0.6" opacity="0.0"><a-cone position="0 0.20 0" color="white" height="0.10" radius-bottom="0.05" radius-top="0.05" open-ended="true" opacity="0.5"></a-cone><a-cone position="0 -0.05 0" color="white" height="0.4" radius-bottom="0.18" radius-top="0.05"open-ended="true" opacity="0.5"></a-cone><a-torus position="0 0.26 0" rotation="90" radius="0.05" radius-tubular="0.005" opacity="0.5"></a-torus><a-torus position="0 -0.275 0" rotation="90" radius="0.1470" radius-tubular="0.02" opacity="0.5"></a-torus><a-torus class="js--fill" position="0 -0.275 0" color="#d59f6a" rotation="90" radius="0.1335" radius-tubular="0.02" opacity="1"></a-torus><a-cone class="js--fill" position="0 -0.23 0" color="#d59f6a" height="0.05" radius-bottom="0.17" radius-top="0.155" open-ended="false" opacity="1"></a-cone><a-cone class="js--fill" position="0 -0.18 0" color="#d59f6a" height="0.08" radius-bottom="0.16" radius-top="0.135" open-ended="false" opacity="1"></a-cone><a-cone class="js--fill" position="0 -0.10 0" color="#d59f6a" height="0.08" radius-bottom="0.135" radius-top="0.11" open-ended="false" opacity="1"></a-cone></a-cone>';
           hold = "eindBeker";
@@ -173,6 +181,7 @@ window.onload = () => {
           bekerBoolean = true;
         } else{
           console.log("neej");
+          errorAudio.play();
         }
       });
     }
@@ -361,41 +370,62 @@ window.onload = () => {
       }
     }
 
+    plant.addEventListener('click', function(event) {
+      puzzleOneHintAppear();
+      puzzleOneGotHint = true;
+      plant.classList.remove('js--interact');
+    })
+
     triConsole.addEventListener('click', function(event) {
       console.log("Click console");
-      if (puzzleOneGotHint == false) {
-        puzzleOneHintAppear();
-        puzzleOneGotHint = true;
-      } else if (hold === 'triangleKey') {
+      if (hold === 'triangleKey') {
         camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
         console.log("PUZZLE ONE COMPLETE");
         puzzleOneComplete = true;
         hold = null;
+        finalTriangleKey.setAttribute('gltf-model','#triangleKey');
+        finalTriangleKey.setAttribute('scale', '0.08 0.08 0.08');
+        finalTriangleKey.setAttribute('position','-1.7 1.5 0');
+        finalTriangleKey.setAttribute('rotation','60 90 0');
+        finalTriangleKey.setAttribute('animation','property: position; to: -1.54 1.21 0; dur: 2000; easing: linear; loop: false');
+        setTimeout(function () {
+          triConsole.setAttribute("gltf-model","blender/gTriConsole.gltf");
+        }, 3000);
+        scene.appendChild(finalTriangleKey);
         puzzleCompletionCheck();
       }
     });
     pentaConsole.addEventListener('click', function(event) {
       console.log("Click console");
-      camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
-      console.log("PUZZLE TWO COMPLETE");
-      puzzleTwoComplete = true;
-      hold = null;
-      puzzleCompletionCheck();
+      if (hold === 'pentagonKey') {
+        camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
+        console.log("PUZZLE TWO COMPLETE");
+        puzzleTwoComplete = true;
+        hold = null;
+        pentaConsole.setAttribute("gltf-model","blender/gPentaConsole.gltf");
+        puzzleCompletionCheck();
+      }
     });
     cubeConsole.addEventListener('click', function(event) {
       console.log("Click console");
-      camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
-      console.log("PUZZLE THREE COMPLETE");
-      puzzleThreeComplete = true;
-      hold = null;
-      puzzleCompletionCheck();
+      if (hold === 'cubeKey') {
+        camera.innerHTML = '<a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1" animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" cursor="fuse: true; fuseTimeout: 2000" material="color: black; shader: flat" geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5" raycaster="objects: .js--interact"></a-entity>';
+        console.log("PUZZLE THREE COMPLETE");
+        puzzleThreeComplete = true;
+        hold = null;
+        cubeConsole.setAttribute("gltf-model","blender/gCubeConsole.gltf");
+        puzzleCompletionCheck();
+      }
     });
 
     function puzzleCompletionCheck() {
       if (puzzleOneComplete == true && puzzleTwoComplete == true && puzzleThreeComplete == true) {
         console.log("GEHAALD, BOM ONTMANTELD!");
-        cheeringAudio.play();
+        bombAudio.play();
+        setTimeout(function(){cheeringAudio.play();},3000);
         bars.setAttribute('animation','property: position; to: 0 10 1; dur: 2000; easing: linear; loop: false;');
+        slingers.setAttribute('animation','property: position; to: -3 2.8 2; dur: 2000; easing: linear; loop: false;');
+
       }
     }
 
@@ -468,6 +498,7 @@ window.onload = () => {
     function updatePuzzleOne() {
       if (puzzleOneLeftNumber === 9 && puzzleOneMiddleNumber === 6 && puzzleOneRightNumber === 1) {
         openTriangleKeyBox();
+        cheeringAudio.play();
         for (var i = 0; i < puzzleOnePlanes.length; i++) {
           puzzleOnePlanes[i].setAttribute('color', 'green');
         }
