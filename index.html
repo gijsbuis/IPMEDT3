@@ -76,7 +76,7 @@
     </a-assets>
 
     <!-- <a-camera id="js--camera" position="0 1.6 7"> -->
-    <a-camera id="js--camera" position="0 1.6 16">
+    <a-camera id="js--camera" position="-2 1.6 5">
       <a-entity
         animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
         animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -159,8 +159,7 @@
     <!-- Muur voor -->
     <a-plane material="src: #wood3" repeat="10 3" height="5" width="18" position="0 5.52 9" rotation="180 0 0">
     </a-plane>
-    <a-plane material="src: #wood3" repeat="5 3" height="5" width="9" position="-8.15 0.52 9" rotation="180 0 0">
-    </a-plane>
+    <a-plane material="src: #wood3" repeat="3 3" height="5" width="5.5" position="-6.40 0.52 9" rotation="180 0 0"></a-plane>
     <a-plane material="src: #wood3" repeat="7 3" height="5" width="14" position="4.85 0.52 9" rotation="180 0 0">
     </a-plane>
 
@@ -293,7 +292,6 @@
       <!-- animation="property: rotation; to: 0 90 0; dur: 1500; easing: linear; loop: false" -->
     </a-entity>
     <!-- End starting room -->
-
 
     <!-- Bom -->
     <a-box scale="1.5 2 1.5" position="0 0 0" material="src: #castIron"></a-box>
@@ -687,9 +685,9 @@
         </a-plane>
         <a-triangle id="js--puzzleOneRightNumberDown" class="js--puzzleOneTriangle js--interact" color="#303030" scale="0.5 0.5 0.5" rotation="0 0 180" position="0 -0.8 0"></a-triangle>
       </a-entity>
-      <a-entity class="puzzleOne--E27" position="2.25 0 0">
+      <a-entity class="puzzleOne--E23" position="2.25 0 0">
         <a-plane class="js--puzzleOnePlane" color="white" position="0 0 0" width="1" align="center">
-          <a-text value="E27" color="black" position="0 0 0.05" align="center" width="10"></a-text>
+          <a-text value="E23" color="black" position="0 0 0.05" align="center" width="10"></a-text>
         </a-plane>
       </a-entity>
     </a-entity>
@@ -710,20 +708,6 @@
       obj-model="obj: #triangleKey-obj; mtl: #triangleKey-mtl" scale="0.08 0.08 0.08" rotation="0 45 0"></a-entity>
     </a-plane>
     </a-box>
-
-    <!-- TODO Gijs:
-  1. Doosje maken ✅
-    1.1 Sleutel in doosje ✅
-  2. Invulpanel maken voor 9,61 ✅
-    2.0 Panels maken om getallen in te vullen ✅
-    2.1 Zorgen dat 9,61 gemaakt kan worden ✅
-    2.2 Zorgen dat je een visuele goedkeuring krijgt wanneer 9,61 is ingevuld ✅
-      2.2.1 Alle planes groen maken en de pijltjes weghalen ✅
-  3. Slot toevoegen dat open gaat wanneer je 9,61 invult ✅
-  4. Er achter komen hoeveel gram het slot is
-    4.1 Andere foto laten zien wanneer deze waarde gevonden is
-  -->
-
 
     <!-- DECORATIES -->
     <a-entity id="js--Slingers" gltf-model="#slingers" position="-3 5 2" rotation="0 90 0" scale="0.4 0.4 0.4">

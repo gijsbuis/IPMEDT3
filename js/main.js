@@ -514,7 +514,7 @@ window.onload = () => {
     });
 
     function updatePuzzleOne() {
-      if (puzzleOneLeftNumber === 9 && puzzleOneMiddleNumber === 6 && puzzleOneRightNumber === 1) {
+      if (puzzleOneLeftNumber === 3 && puzzleOneMiddleNumber === 7 && puzzleOneRightNumber === 7) {
         openTriangleKeyBox();
         cheeringAudio.play();
         for (var i = 0; i < puzzleOnePlanes.length; i++) {
