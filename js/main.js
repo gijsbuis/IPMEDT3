@@ -59,10 +59,38 @@ window.onload = () => {
 // Movement //
   for (let i = 0; i < places.length; i++) {
     places[i].addEventListener('click', function(event) {
-      let att = document.createAttribute('animation');
-      att.value = "property: position; easing: linear; dur: 2000; to: " + this.getAttribute('position').x + " 1.6 " + this.getAttribute('position').z;
+      let att = document.createAttribute("animation");
+      let differenceX = Math.abs(this.getAttribute('position').x - getCameraPositionX());
+      let differenceZ = Math.abs(this.getAttribute('position').z - getCameraPositionZ());
+      let duration = 2000;
+
+      if (differenceX !== 0 && differenceZ !== 0) {
+        duration = stellingPythagoras(differenceX, differenceZ) * 400;
+      } else if (differenceX === 0) {
+        duration = differenceZ * 400;
+      } else if (differenceZ === 0 ) {
+        duration = differenceX * 400;
+      }
+
+      att.value = "property: position; easing: linear; to: " + this.getAttribute('position').x + " 1.6 " + this.getAttribute('position').z + "; dur: " + duration;
       camera.setAttribute('animation', att.value);
     });
+  }
+
+  function stellingPythagoras(xAfstand, zAfstand) {
+    let schuineAfstandKwadraat = Math.pow(xAfstand, 2) + Math.pow(zAfstand, 2);
+    let schuineAfstand = Math.sqrt(schuineAfstandKwadraat);
+    return schuineAfstand;
+  }
+
+  function getCameraPositionX() {
+    let currentPositionX = camera.getAttribute('position').x;
+    return currentPositionX;
+  }
+
+  function getCameraPositionZ() {
+    let currentPositionZ = camera.getAttribute('position').z;
+    return currentPositionZ;
   }
 
   const bekerCarry = document.getElementById("js--bekerCarry");
